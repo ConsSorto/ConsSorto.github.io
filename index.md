@@ -1,5 +1,5 @@
 # 🚀 ConsDev | Ingeniería & Educación
-## Ing. ConsSorto - Arquitecto de Software - Catedrático de TI @ UNAH
+## Constantino Sorto - Arquitecto de Software - Catedrático de TI @ UNAH
 
 Bienvenido a mi espacio de formación técnica. Aquí comparto el material de mis clases y recursos para la comunidad de desarrolladores.
 
