@@ -23,31 +23,44 @@
     display: block !important;
     width: 100% !important;
   }
-
-/* 3. El Botón Simple */
+/* --- 3. Botón Zen con Icono --- */
   #toggle-nav {
     position: fixed;
-    top: 10px;
-    right: 10px;
+    top: 15px;
+    right: 15px;
     z-index: 9999;
-    padding: 8px 12px;
+    width: 45px;
+    height: 45px;
     background: #BB86FC;
     color: #000;
     border: none;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: bold;
+    border-radius: 50%; /* Circular */
+    font-size: 20px;
     cursor: pointer;
-    opacity: 0.6;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
   }
-  #toggle-nav:hover { opacity: 1; }
+  #toggle-nav:hover { transform: scale(1.1); background: #03DAC6; }
 
-  /* 4. La Lógica de Ocultar */
+  /* --- 4. Lógica de Ocultar Menú --- */
   body.hide-menu .side-bar { display: none !important; }
   body.hide-menu .main { margin-left: 0 !important; max-width: 100% !important; }
   body.hide-menu .main-header { left: 0 !important; width: 100% !important; }
+
+  /* --- 5. Estilo para el Logo del Footer --- */
+  .footer-logo {
+    width: 60px;
+    opacity: 0.5;
+    filter: grayscale(100%);
+    transition: 0.3s;
+    margin-bottom: 10px;
+  }
+  .footer-logo:hover { opacity: 1; filter: grayscale(0%); }
 </style>
 
-<button id="toggle-nav" onclick="document.body.classList.toggle('hide-menu')">
-  MODO LECTURA
+<button id="toggle-nav" onclick="document.body.classList.toggle('hide-menu')" title="Modo Enfoque">
+  🖥️
 </button>
