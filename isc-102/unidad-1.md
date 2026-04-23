@@ -21,7 +21,7 @@ Para entender cómo interactúan estos elementos, es vital conocer el **ciclo EP
 {% include imagen.html 
    url="../assets/ciclo-epsa.png" 
    alt="Ciclo EPSA" 
-   caption="Figura 1.1: El ciclo de procesamiento de datos." 
+   caption="Figura 1.2: El ciclo de procesamiento de datos." 
 %}
 
 
@@ -29,7 +29,12 @@ Para entender cómo interactúan estos elementos, es vital conocer el **ciclo EP
 Las computadoras no entienden el español o el inglés; ellas operan con **lenguaje máquina**, una secuencia de ceros y unos. Para facilitarnos la tarea, los programadores usamos **lenguajes de alto nivel**, como el lenguaje **C**.
 Como la computadora no entiende "C" directamente, necesitamos una herramienta llamada **compilador**, que traduce nuestro "código fuente" a un "programa ejecutable" que la máquina sí comprende (este flujo se detalla en el **Capítulo 2, Figura 2.5**).
 
-![Procesos de Compilación](../assets/cap2fig2.5.png)
+{% include imagen.html 
+   url="../assets/cap2fig2.5.png" 
+   alt="Procesos de Compilación" 
+   caption="Figura 2.5: Procesos de Compilación" 
+%}
+
 
 ## 3. El corazón de la programación: El Algoritmo
 Antes de tocar el teclado, necesitas un plan. Ese plan se llama **algoritmo**: un método preciso, definido y finito para resolver un problema paso a paso. 
@@ -38,7 +43,12 @@ Para planificar esta lógica antes de codificar, los programadores usamos dos he
 *   **Pseudocódigo:** Instrucciones escritas en lenguaje natural enriquecidas con términos técnicos.
 *   **Diagramas de Flujo:** Representaciones gráficas que utilizan símbolos estandarizados para visualizar la ruta de la solución (consulta el significado de los símbolos en el **Capítulo 2, Figura 2.2**).
 
-![Diagrama de Flujo](../assets/cap2fig2.2.png)
+{% include imagen.html 
+   url="../assets/cap2fig2.2.png" 
+   alt="Diagrama de Flujo" 
+   caption="Figura 2.2: Diagrama de Flujo" 
+%}
+
 
 ## 4. ¿Cómo se programa? Las fases del éxito
 Crear software de calidad requiere seguir una metodología profesional:
