@@ -5,33 +5,35 @@
   h1, h2, h3, h4 { text-align: left; }
 
 .site-header {
-    display: block !important; /* Cambiamos a block para evitar colapsos de flexbox */
-    padding: 20px 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 0 !important; /* Eliminamos el padding que generaba espacio extra */
     border-bottom: none !important;
-    height: auto !important;
+    height: auto !important; /* Permite que el contenedor crezca con el logo */
+    min-height: 0 !important;
   }
   
   .site-header .site-title {
     display: block !important;
     width: 100% !important;
-    max-width: 350px !important; /* Aumentamos el ancho máximo permitido */
-    margin: 0 auto !important;
+    max-width: 100% !important; 
+    margin: 0 !important; /* Eliminamos márgenes para pegar el logo a los bordes */
     padding: 0 !important;
     transition: none !important;
   }
 
   .site-logo {
     width: 100% !important; 
-    height: 250px !important; /* Forzamos una altura física real para que no colapse */
-    min-height: 250px !important;
+    height: 200px !important; /* Tamaño grande pero más equilibrado */
+    min-height: 200px !important;
     display: block !important;
-    margin: 0 auto !important;
   }
 
   /* Aseguramos que la imagen inyectada por la plantilla respete el tamaño */
   .site-logo img, .site-title img {
-    height: 250px !important; /* Forzamos a la imagen a crecer hasta esta altura */
-    max-height: 250px !important;
+    height: 200px !important;
+    max-height: 200px !important;
     width: auto !important;
     display: block !important;
     margin: 0 auto !important;
