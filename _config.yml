@@ -9,6 +9,8 @@ search_enabled: true
 
 # Soporte para diagramas
 has_mermaid: true
+mermaid:
+  version: "10"
 
 # Estética
 color_scheme: dark
