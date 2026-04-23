@@ -1,10 +1,11 @@
 ---
 layout: default
-title: Unidad 1 - Fundamentos
+title: Unidad I: Introducción y Lógica de Programación
 parent: ISC-102 Programación Estructurada
+has_mermaid: true
 ---
 
-# 📘 Unidad 1: Guía para el Futuro Programador
+# 📘 Unidad I: Introducción y Lógica de Programación
 ## Dominando el Arte de Resolver Problemas
 
 # ¡Hola, Mundo! Guía Esencial para Iniciar en la Programación
