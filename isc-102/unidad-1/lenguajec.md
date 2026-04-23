@@ -1,8 +1,8 @@
 ---
 layout: default
 title: "Bloque 1: Lenguaje C - Historia y Estructura"
-parent: "ISC-102 Programación Estructurada"
-nav_order: 1
+parent: "Unidad I: Introducción y Lógica de Programación"
+nav_order: 3
 has_mermaid: true 
 ---
 

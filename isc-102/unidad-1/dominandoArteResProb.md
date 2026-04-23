@@ -1,8 +1,8 @@
 ---
 layout: default
 title: "Bloque 0: Dominando el Arte de Resolver Problemas"
-parent: "ISC-102 Programación Estructurada"
-nav_order: 1
+parent: "Unidad I: Introducción y Lógica de Programación"
+nav_order: 2
 has_mermaid: true 
 ---
 

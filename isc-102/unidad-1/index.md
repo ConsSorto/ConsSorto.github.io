@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Introducción"
+title: "Unidad I: Introducción y Lógica de Programación"
 parent: "ISC-102 Programación Estructurada"
 nav_order: 1
 has_mermaid: true 

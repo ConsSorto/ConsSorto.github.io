@@ -1,8 +1,8 @@
 ---
 layout: default
 title: "Bloque 3: Control de Flujo"
-parent: "ISC-102 Programación Estructurada"
-nav_order: 1
+parent: "Unidad I: Introducción y Lógica de Programación"
+nav_order: 5
 has_mermaid: true 
 ---
 
