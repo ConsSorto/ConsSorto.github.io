@@ -1,0 +1,11 @@
+remote_theme: pmarsceill/just-the-docs # Un tema profesional para documentación y clases
+title: ConsDev | Arquitecto de Software
+description: Blog de CConstantino Sorto - Arquitecto de Software - Catedrático de TI @ UNAH
+url: "https://ConsSorto.github.io"
+
+# Configuración del menú
+nav_enabled: true
+search_enabled: true # ¡Esto activará un buscador automático para tus alumnos!
+
+# Configuración del tema
+color_scheme: dark # O "light" si prefieres, pero el dark es más de programador
