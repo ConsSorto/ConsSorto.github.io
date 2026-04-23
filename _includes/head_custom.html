@@ -17,20 +17,22 @@
     max-width: 280px !important;
     margin: 0 auto !important;
     padding: 0 !important;
-    text-indent: -9999px !important;
-    font-size: 0 !important;
-    line-height: 0 !important;
     transition: none !important;
   }
 
   .site-logo {
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
     width: 100% !important;
-    height: 180px !important;
-    min-height: 180px !important;
+    max-height: 180px !important;
     display: block !important;
+    margin: 0 auto !important;
+  }
+
+  /* Aseguramos que la imagen inyectada por la plantilla respete el tamaño */
+  .site-logo img, .site-title img {
+    max-height: 180px !important;
+    width: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
   }
   
   /* Forzamos al contenedor de Mermaid a ser un bloque centrado */
