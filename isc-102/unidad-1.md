@@ -1,3 +1,9 @@
+---
+layout: default
+title: Unidad 1 - Fundamentos
+parent: ISC-102 Programación Estructurada
+---
+
 # 📘 Unidad 1: Guía para el Futuro Programador
 ## Dominando el Arte de Resolver Problemas
 

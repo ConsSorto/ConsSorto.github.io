@@ -7,5 +7,9 @@ url: "https://ConsSorto.github.io"
 nav_enabled: true
 search_enabled: true # ¡Esto activará un buscador automático para tus alumnos!
 
+has_mermaid: true
+mermaid:
+  version: "10" # O la versión más reciente
+
 # Configuración del tema
 color_scheme: dark # O "light" si prefieres, pero el dark es más de programador

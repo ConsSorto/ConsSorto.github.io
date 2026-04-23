@@ -1,3 +1,10 @@
+---
+layout: default
+title: ISC-102 Programación Estructurada
+nav_order: 2
+has_children: true
+---
+
 # 📘 ISC-102: Programación Estructurada
 
 Este es el repositorio de contenido para la clase. Aquí seguiremos el sílabo oficial.
