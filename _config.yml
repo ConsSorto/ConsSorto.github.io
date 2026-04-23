@@ -2,7 +2,7 @@ remote_theme: pmarsceill/just-the-docs
 title: "ConsDev"
 description: "Blog de Constantino Sorto | Catedrático de TI @ UNAH"
 url: "https://ConsSorto.github.io"
-#logo: "/assets/logo-consdev.png"
+logo: "/assets/logo-consdev.png"
 
 # Configuración de navegación
 nav_enabled: true
