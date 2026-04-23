@@ -10,21 +10,26 @@
     align-items: center !important;
     padding: 40px 0 20px 0 !important;
     border-bottom: none !important; /* Adiós a la línea de arriba */
+    min-height: 280px !important; /* Forzamos al contenedor a ser más alto */
   }
   
-  .site-title {
+  /* Usamos un selector más específico para romper bloqueos del tema */
+  .site-header .site-title {
     background-image: url("/assets/logo-consdev.png") !important;
-    background-size: contain !important;
+    background-size: contain !important; 
     background-repeat: no-repeat !important;
     background-position: center !important;
-    height: 180px !important; /* Tamaño aumentado 50% */
-    width: 450px !important; /* Ancho aumentado 50% */
-    max-width: 100% !important; /* Asegura que en móviles no se salga de la pantalla */
+    height: 250px !important; /* Aumento significativo de altura */
+    width: 100% !important; /* Que use todo el ancho disponible */
+    min-width: 320px !important; /* Forzamos un ancho mínimo para que no se encoja en el sidebar */
+    max-width: 550px !important; /* Límite máximo para que no se descontrole */
     display: block !important;
     text-indent: -9999px; /* Ocultamos el texto del título para que solo se vea el logo */
     transition: none !important; /* Evita que la plantilla aplique efectos de escala al hacer clic */
+    margin: 0 auto !important;
   }
 
+  
   /* Forzamos al contenedor de Mermaid a ser un bloque centrado */
   code.language-mermaid { 
     display: block !important; 
