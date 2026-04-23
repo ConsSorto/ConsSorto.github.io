@@ -1,0 +1,13 @@
+<div style="text-align: center; margin: 2.5rem 0;">
+  <img src="{{ include.url | relative_url }}" 
+       alt="{{ include.alt }}" 
+       style="max-width: {{ include.width | default: '85%' }}; 
+              border-radius: 12px; 
+              box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+              border: 1px solid #333;">
+  {% if include.caption %}
+    <p style="margin-top: 12px; color: #999; font-style: italic; font-size: 0.9em; font-family: sans-serif;">
+      {{ include.caption }}
+    </p>
+  {% endif %}
+</div>

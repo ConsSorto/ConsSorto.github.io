@@ -18,7 +18,12 @@ En esencia, la programación es un **proceso de resolución de problemas**. Cons
 
 Para entender cómo interactúan estos elementos, es vital conocer el **ciclo EPSA** (Entrada, Procesamiento, Salida y Almacenamiento), que describe cómo los datos se convierten en información útil (puedes ver el esquema en el **Capítulo 1, Figura 1.2** del libro de Joyanes).
 
-![Diagrama del Ciclo EPSA](../assets/ciclo-epsa.png)
+{% include imagen.html 
+   url="../assets/ciclo-epsa.png" 
+   alt="Ciclo EPSA" 
+   caption="Figura 1.1: El ciclo de procesamiento de datos." 
+%}
+
 
 ## 2. El lenguaje de las máquinas vs. el nuestro
 Las computadoras no entienden el español o el inglés; ellas operan con **lenguaje máquina**, una secuencia de ceros y unos. Para facilitarnos la tarea, los programadores usamos **lenguajes de alto nivel**, como el lenguaje **C**.
