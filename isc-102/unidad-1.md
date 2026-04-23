@@ -43,6 +43,7 @@ Crear software de calidad requiere seguir una metodología profesional:
 4.  **Compilación y Ejecución:** Traducir y poner en marcha el código.
 5.  **Verificación y Depuración:** Probar el programa y eliminar los **"bugs"** o errores.
 
+```mermaid
 graph TD
     A[Análisis: El Qué] --> B[Diseño: El Cómo - Algoritmo]
     B --> C[Codificación: Escribir C++]
@@ -52,6 +53,7 @@ graph TD
     E --> F{¿Funciona Correctamente?}
     F -- No (Bugs) --> B
     F -- Sí --> G[¡Software Terminado!]
+```
 
 ## 5. Paradigmas de Programación: Nuestro Enfoque
 Un **paradigma** es un enfoque o estilo de programación que determina cómo el programador ve la ejecución del programa. Los principales paradigmas mencionados en el libro de Joyanes (Capítulo 1.16) son:
