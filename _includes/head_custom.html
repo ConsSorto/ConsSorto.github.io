@@ -14,15 +14,21 @@
   
   .site-header .site-title {
     background-image: url("/assets/logo-consdev.png") !important;
-    background-size: 140% !important; /* Forzamos a que la imagen crezca un 40% más */
+    background-size: contain !important; 
     background-repeat: no-repeat !important;
     background-position: center !important;
-    height: 180px !important; /* Ajustamos el alto para el nuevo tamaño */
-    width: 100% !important;
+    /* Definimos una caja física para el enlace */
+    display: block !important;
+    width: 280px !important; /* Ancho suficiente para que el logo se vea grande */
+    height: 170px !important; /* El alto proporcional que deseabas */
+    
+    /* Eliminamos interferencias de texto */
     display: block !important;
     text-indent: -9999px;
-    margin: 10px 0 !important; /* Reducimos el espacio arriba y abajo al mínimo */
+    margin: 15px auto !important; /* Centrado horizontal y margen vertical controlado */
     transition: none !important;
+    line-height: 0 !important;
+    font-size: 0 !important;
   }
 
   
