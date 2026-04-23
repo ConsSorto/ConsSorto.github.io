@@ -5,9 +5,11 @@
   h1, h2, h3, h4 { text-align: left; }
 
 .site-header {
-    padding: 50px 0 30px 0 !important; /* Más espacio arriba y abajo */
-    border-bottom: 1px solid #333 !important; /* Línea divisoria clara */
-    margin-bottom: 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 40px 0 20px 0 !important;
+    border-bottom: none !important; /* Adiós a la línea de arriba */
   }
   
   .site-title {
@@ -76,33 +78,34 @@
   }
   .footer-logo:hover { opacity: 1; filter: grayscale(0%); }
 
- /* 1. Oculta el encabezado "Table of contents" */
-  h2.text-delta, 
-  h2.text-delta + ul,
-  hr + h2.text-delta,
-  h2.text-delta + ul + hr {
-    display: none !important;
+.search-label {
+    font-size: 0 !important;
   }
-
- .search-input {
-    padding-left: 30px !important;
+  .search-label::before {
+    content: "Buscar en ConsDev...";
+    font-size: 14px !important;
+    color: #888;
+    visibility: visible;
   }
-  /* Escondemos el label original que dice "Search" */
-  .search-label {
-    font-size: 0 !important; 
+  
+  /* Aseguramos que el input no muestre el placeholder en inglés */
+  .search-input::placeholder {
     color: transparent !important;
   }
-  /* Ponemos nuestro texto sin que choque con nada */
-  .search-label::after {
-    content: "Buscar...";
-    font-size: 14px !important;
-    color: #888 !important;
-    visibility: visible !important;
-    display: inline-block;
-    margin-left: 5px;
+
+  /* --- 4. Limpieza del Índice (TOC) --- */
+  h2.text-delta, h2.text-delta + ul, hr {
+    display: none !important;
   }
  </style>
-
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const searchInput = document.querySelector('.search-input');
+    if (searchInput) {
+      searchInput.placeholder = "Buscar...";
+    }
+  });
+</script>
 <button id="toggle-nav" onclick="document.body.classList.toggle('hide-menu')" title="Modo Enfoque">
   🖥️
 </button>
