@@ -1,6 +1,6 @@
 ---
 layout: default
-title: ISC-102 Programación Estructurada
+title: "ISC-102 Programación Estructurada"
 nav_order: 2
 has_children: true
 ---

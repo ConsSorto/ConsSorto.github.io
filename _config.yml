@@ -1,22 +1,14 @@
 remote_theme: pmarsceill/just-the-docs
-title: ConsDev
-description: Blog de Constantino Sorto - Arquitecto de Software - Catedrático de TI @ UNAH
+title: "ConsDev"
+description: "Blog de Constantino Sorto | Catedrático de TI @ UNAH"
 url: "https://ConsSorto.github.io"
 
-# Configuración del menú
+# Configuración de navegación
 nav_enabled: true
 search_enabled: true
 
-# Configuración del Buscador (Corregida la indentación)
-search:
-  button: "Buscar en ConsDev..."
-  placeholder: "Escribe un tema (ej. Punteros)..."
-  tokenizer_separator: '/[\s\-/]+/'
-
-# Configuración de Mermaid
+# Soporte para diagramas
 has_mermaid: true
-mermaid:
-  version: "10"
 
-# Configuración del tema
+# Estética
 color_scheme: dark
