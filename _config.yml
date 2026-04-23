@@ -15,12 +15,3 @@ mermaid:
 
 # Estética
 color_scheme: dark
-
-<style>
-  /* Centra todos los diagramas de Mermaid del sitio */
-  .mermaid {
-    display: flex;
-    justify-content: center;
-    margin: 2rem 0;
-  }
-</style>
