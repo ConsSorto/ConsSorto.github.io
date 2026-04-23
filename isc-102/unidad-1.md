@@ -44,6 +44,7 @@ Crear software de calidad requiere seguir una metodología profesional:
 5.  **Verificación y Depuración:** Probar el programa y eliminar los **"bugs"** o errores.
 
 ```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'lineColor': '#BB86FC', 'primaryColor': '#3700B3', 'nodeBorder': '#03DAC6' }}}%%
 graph TD
     A[Análisis: El Qué] --> B[Diseño: El Cómo - Algoritmo]
     B --> C[Codificación: Escribir C++]
