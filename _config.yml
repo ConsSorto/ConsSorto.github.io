@@ -1,21 +1,22 @@
-remote_theme: pmarsceill/just-the-docs # Un tema profesional para documentación y clases
+remote_theme: pmarsceill/just-the-docs
 title: ConsDev
 description: Blog de Constantino Sorto - Arquitecto de Software - Catedrático de TI @ UNAH
 url: "https://ConsSorto.github.io"
 
 # Configuración del menú
 nav_enabled: true
-search_enabled: true # ¡Esto activará un buscador automático para tus alumnos!
+search_enabled: true
 
+# Configuración del Buscador (Corregida la indentación)
 search:
-button: "Buscar en ConsDev..."
+  button: "Buscar en ConsDev..."
   placeholder: "Escribe un tema (ej. Punteros)..."
-  # Esto ayuda a que el buscador entienda mejor el español
   tokenizer_separator: '/[\s\-/]+/'
 
+# Configuración de Mermaid
 has_mermaid: true
 mermaid:
-  version: "10" # O la versión más reciente
+  version: "10"
 
 # Configuración del tema
-color_scheme: dark # O "light" si prefieres, pero el dark es más de programador
+color_scheme: dark
