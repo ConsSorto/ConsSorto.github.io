@@ -5,32 +5,33 @@
   h1, h2, h3, h4 { text-align: left; }
 
 .site-header {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    padding: 0 !important; /* Eliminamos rellenos del contenedor */
+    display: block !important; /* Cambiamos a block para evitar colapsos de flexbox */
+    padding: 20px 0 !important;
     border-bottom: none !important;
+    height: auto !important;
   }
   
   .site-header .site-title {
-    background-image: url("/assets/logo-consdev.png") !important;
-    background-size: contain !important; 
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    /* Definimos una caja física para el enlace */
     display: block !important;
-    width: 280px !important; /* Ancho suficiente para que el logo se vea grande */
-    height: 170px !important; /* El alto proporcional que deseabas */
-    
-    /* Eliminamos interferencias de texto */
-    display: block !important;
-    text-indent: -9999px;
-    margin: 15px auto !important; /* Centrado horizontal y margen vertical controlado */
-    transition: none !important;
-    line-height: 0 !important;
+    width: 100% !important;
+    max-width: 280px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    text-indent: -9999px !important;
     font-size: 0 !important;
+    line-height: 0 !important;
+    transition: none !important;
   }
 
+  .site-logo {
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    width: 100% !important;
+    height: 180px !important;
+    min-height: 180px !important;
+    display: block !important;
+  }
   
   /* Forzamos al contenedor de Mermaid a ser un bloque centrado */
   code.language-mermaid { 
