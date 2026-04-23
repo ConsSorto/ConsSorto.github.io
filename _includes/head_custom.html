@@ -4,10 +4,10 @@
   .main-content img { display: block; margin: 2rem auto; max-width: 85%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
   h1, h2, h3, h4 { text-align: left; }
 
- .site-header {
-    padding-top: 30px !important;
-    padding-bottom: 40px !important; /* Aumentamos esto para separar el logo de la línea */
-    border-bottom: 1px solid #333 !important; /* La línea divisoria */
+.site-header {
+    padding: 50px 0 30px 0 !important; /* Más espacio arriba y abajo */
+    border-bottom: 1px solid #333 !important; /* Línea divisoria clara */
+    margin-bottom: 20px !important;
   }
   
   .site-title {
@@ -77,40 +77,30 @@
   .footer-logo:hover { opacity: 1; filter: grayscale(0%); }
 
  /* 1. Oculta el encabezado "Table of contents" */
-  h2.text-delta {
-    display: none !important;
-  }
-
-  /* 2. Oculta la lista (ul) que sigue inmediatamente al encabezado */
-  h2.text-delta + ul {
-    display: none !important;
-  }
-
-  /* 3. Oculta las líneas divisorias (hr) que suelen rodear al índice */
-  hr + h2.text-delta, 
+  h2.text-delta, 
+  h2.text-delta + ul,
+  hr + h2.text-delta,
   h2.text-delta + ul + hr {
     display: none !important;
   }
-  
-  main hr:nth-last-of-type(1), 
-  main hr:nth-last-of-type(2) {
-    display: none !important;
+
+ .search-input {
+    padding-left: 30px !important;
   }
-  /* --- 2. Traducir el Buscador (Truco CSS) --- */
-  .search-input::placeholder {
-    color: transparent !important; /* Escondemos el "Search ConsDev" original */
+  /* Escondemos el label original que dice "Search" */
+  .search-label {
+    font-size: 0 !important; 
+    color: transparent !important;
   }
+  /* Ponemos nuestro texto sin que choque con nada */
   .search-label::after {
-    content: "Buscar en ConsDev..."; /* Tu texto en español */
-    position: absolute;
-    left: 40px;
-    top: 11px;
-    font-size: 14px;
-    color: #888;
-    pointer-events: none; /* Para que el clic pase al input */
+    content: "Buscar...";
+    font-size: 14px !important;
+    color: #888 !important;
+    visibility: visible !important;
+    display: inline-block;
+    margin-left: 5px;
   }
-
-
  </style>
 
 <button id="toggle-nav" onclick="document.body.classList.toggle('hide-menu')" title="Modo Enfoque">
