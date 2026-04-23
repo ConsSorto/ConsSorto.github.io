@@ -72,11 +72,20 @@
   }
   .footer-logo:hover { opacity: 1; filter: grayscale(0%); }
 
-  .text-delta, 
-  #markdown-toc, 
-  #markdown-toc + ul, 
-  .toc-list { 
-    display: none !important; 
+ /* 1. Oculta el encabezado "Table of contents" */
+  h2.text-delta {
+    display: none !important;
+  }
+
+  /* 2. Oculta la lista (ul) que sigue inmediatamente al encabezado */
+  h2.text-delta + ul {
+    display: none !important;
+  }
+
+  /* 3. Oculta las líneas divisorias (hr) que suelen rodear al índice */
+  hr + h2.text-delta, 
+  h2.text-delta + ul + hr {
+    display: none !important;
   }
  </style>
 
