@@ -10,10 +10,13 @@ En esencia, la programación es un **proceso de resolución de problemas**. Cons
 
 Para entender cómo interactúan estos elementos, es vital conocer el **ciclo EPSA** (Entrada, Procesamiento, Salida y Almacenamiento), que describe cómo los datos se convierten en información útil (puedes ver el esquema en el **Capítulo 1, Figura 1.2** del libro de Joyanes).
 
+![Diagrama del Ciclo EPSA](../assets/ciclo-epsa.png)
+
 ## 2. El lenguaje de las máquinas vs. el nuestro
 Las computadoras no entienden el español o el inglés; ellas operan con **lenguaje máquina**, una secuencia de ceros y unos. Para facilitarnos la tarea, los programadores usamos **lenguajes de alto nivel**, como el lenguaje **C**.
-
 Como la computadora no entiende "C" directamente, necesitamos una herramienta llamada **compilador**, que traduce nuestro "código fuente" a un "programa ejecutable" que la máquina sí comprende (este flujo se detalla en el **Capítulo 2, Figura 2.5**).
+
+![Procesos de Compilación](../assets/cap2fig2.5.png)
 
 ## 3. El corazón de la programación: El Algoritmo
 Antes de tocar el teclado, necesitas un plan. Ese plan se llama **algoritmo**: un método preciso, definido y finito para resolver un problema paso a paso. 
@@ -21,6 +24,8 @@ Antes de tocar el teclado, necesitas un plan. Ese plan se llama **algoritmo**: u
 Para planificar esta lógica antes de codificar, los programadores usamos dos herramientas principales:
 *   **Pseudocódigo:** Instrucciones escritas en lenguaje natural enriquecidas con términos técnicos.
 *   **Diagramas de Flujo:** Representaciones gráficas que utilizan símbolos estandarizados para visualizar la ruta de la solución (consulta el significado de los símbolos en el **Capítulo 2, Figura 2.2**).
+
+![Diagrama de Flujo](../assets/cap2fig2.2.png)
 
 ## 4. ¿Cómo se programa? Las fases del éxito
 Crear software de calidad requiere seguir una metodología profesional:
@@ -30,13 +35,33 @@ Crear software de calidad requiere seguir una metodología profesional:
 4.  **Compilación y Ejecución:** Traducir y poner en marcha el código.
 5.  **Verificación y Depuración:** Probar el programa y eliminar los **"bugs"** o errores.
 
-## 5. Paradigmas de Programación: El Enfoque Estructurado
-Existen diferentes formas de abordar problemas, conocidas como **paradigmas** (como el Orientado a Objetos o el Funcional). Sin embargo, en esta asignatura **ISC-102**, nos centramos en la **Programación Estructurada**.
+graph TD
+    A[Análisis: El Qué] --> B[Diseño: El Cómo - Algoritmo]
+    B --> C[Codificación: Escribir C++]
+    C --> D{¿Compila?}
+    D -- No --> C
+    D -- Sí --> E[Ejecución y Pruebas]
+    E --> F{¿Funciona Correctamente?}
+    F -- No (Bugs) --> B
+    F -- Sí --> G[¡Software Terminado!]
 
-Este enfoque es la base de la ingeniería y se basa en tres estructuras de control:
-1.  **Secuencia:** Instrucciones ejecutadas una tras otra.
-2.  **Selección:** Toma de decisiones (`if`, `switch`).
-3.  **Repetición:** Uso de bucles (`for`, `while`) para tareas constantes.
+## 5. Paradigmas de Programación: Nuestro Enfoque
+Un **paradigma** es un enfoque o estilo de programación que determina cómo el programador ve la ejecución del programa. Los principales paradigmas mencionados en el libro de Joyanes (Capítulo 1.16) son:
+
+*   **Paradigma Imperativo (Procedimental):** Es el enfoque tradicional donde el programa es una secuencia de órdenes que manipulan datos (ejemplos: Pascal, C).
+*   **Paradigma Declarativo:** El programador describe el problema en lugar de la solución algorítmica, basándose en lógica formal (ejemplo: Prolog).
+*   **Paradigma Funcional:** Se centra en la evaluación de funciones matemáticas (ejemplo: LISP).
+*   **Paradigma Orientado a Objetos (POO):** Organiza el software en "objetos" que combinan datos y operaciones (ejemplos: Java, C++).
+
+### **Énfasis en la Programación Estructurada**
+Es fundamental aclarar que esta asignatura, **ISC-102**, se centra exclusivamente en la **Programación Estructurada**. Este es un enfoque específico dentro del paradigma procedimental que busca crear programas legibles y eficientes mediante el uso de solo tres estructuras de control:
+
+1.  **Secuencia:** Las instrucciones se ejecutan una tras otra en el orden en que aparecen.
+2.  **Selección (Decisión):** El programa elige un camino u otro basándose en una condición (utilizando sentencias como `if` y `switch`).
+3.  **Repetición (Bucles):** Se repiten bloques de instrucciones mediante sentencias como `while`, `for` y `do-while`.
+
+Aprender programación estructurada es el paso inicial y vital en tu formación, ya que constituye la "espina dorsal" de la ingeniería. Te permitirá desarrollar un razonamiento lógico sólido antes de avanzar a modelos más complejos como la orientación a objetos.
+
 
 ## Conclusión
 Programar no es solo aprender reglas de escritura, sino desarrollar un **razonamiento lógico y estructurado**. Es la capacidad de "dialogar" con la máquina para construir soluciones innovadoras. 
