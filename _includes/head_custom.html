@@ -4,7 +4,11 @@
   .main-content img { display: block; margin: 2rem auto; max-width: 85%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
   h1, h2, h3, h4 { text-align: left; }
 
-  .site-header { padding: 40px 0 !important; } /* Damos espacio */
+ .site-header {
+    padding-top: 30px !important;
+    padding-bottom: 40px !important; /* Aumentamos esto para separar el logo de la línea */
+    border-bottom: 1px solid #333 !important; /* La línea divisoria */
+  }
   
   .site-title {
     background-image: url("/assets/logo-consdev.png") !important;
@@ -87,6 +91,26 @@
   h2.text-delta + ul + hr {
     display: none !important;
   }
+  
+  main hr:nth-last-of-type(1), 
+  main hr:nth-last-of-type(2) {
+    display: none !important;
+  }
+  /* --- 2. Traducir el Buscador (Truco CSS) --- */
+  .search-input::placeholder {
+    color: transparent !important; /* Escondemos el "Search ConsDev" original */
+  }
+  .search-label::after {
+    content: "Buscar en ConsDev..."; /* Tu texto en español */
+    position: absolute;
+    left: 40px;
+    top: 11px;
+    font-size: 14px;
+    color: #888;
+    pointer-events: none; /* Para que el clic pase al input */
+  }
+
+
  </style>
 
 <button id="toggle-nav" onclick="document.body.classList.toggle('hide-menu')" title="Modo Enfoque">
