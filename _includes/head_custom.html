@@ -14,11 +14,23 @@
     box-shadow: 0 4px 20px rgba(0,0,0,0.4); /* Sombrita pro */
   }
 
-  /* 3. Centrar los diagramas de Mermaid (que ya teníamos) */
-  .mermaid {
-    display: flex;
-    justify-content: center;
-    margin: 2rem 0;
+/* 3. Centrar diagramas Mermaid (Ajustado para tu estructura real) */
+  /* Targeteamos el 'pre' que contiene el código de mermaid */
+  .main-content pre:has(code.language-mermaid),
+  .main-content pre.mermaid,
+  .main-content .mermaid {
+    display: flex !important;
+    justify-content: center !important;
+    background-color: transparent !important; /* Quita el fondo gris de bloque de código */
+    border: none !important;
+    padding: 0 !important;
+    overflow-x: visible !important; /* Evita scrolls innecesarios */
+  }
+
+  /* Aseguramos que el SVG interno sea un bloque centrado */
+  code.language-mermaid svg {
+    margin: 0 auto !important;
+    display: block !important;
   }
   
   /* Ajuste para que los títulos no se justifiquen (se ven mal) */
