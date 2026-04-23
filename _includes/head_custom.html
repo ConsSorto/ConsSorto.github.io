@@ -14,25 +14,28 @@
   .site-header .site-title {
     display: block !important;
     width: 100% !important;
-    max-width: 280px !important;
+    max-width: 350px !important; /* Aumentamos el ancho máximo permitido */
     margin: 0 auto !important;
     padding: 0 !important;
     transition: none !important;
   }
 
   .site-logo {
-    width: 100% !important;
-    max-height: 180px !important;
+    width: 100% !important; 
+    height: 250px !important; /* Forzamos una altura física real para que no colapse */
+    min-height: 250px !important;
     display: block !important;
     margin: 0 auto !important;
   }
 
   /* Aseguramos que la imagen inyectada por la plantilla respete el tamaño */
   .site-logo img, .site-title img {
-    max-height: 180px !important;
+    height: 250px !important; /* Forzamos a la imagen a crecer hasta esta altura */
+    max-height: 250px !important;
     width: auto !important;
     display: block !important;
     margin: 0 auto !important;
+    object-fit: contain; /* Mantiene la proporción sin deformar */
   }
   
   /* Forzamos al contenedor de Mermaid a ser un bloque centrado */
