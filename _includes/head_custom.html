@@ -18,9 +18,11 @@
     background-repeat: no-repeat !important;
     background-position: center !important;
     height: 120px !important; /* Tamaño Pro */
-    width: 100% !important;
+    width: 300px !important; /* Fijamos el ancho para evitar que crezca al expandir el layout */
+    max-width: 100% !important; /* Asegura que en móviles no se salga de la pantalla */
     display: block !important;
     text-indent: -9999px; /* Ocultamos el texto del título para que solo se vea el logo */
+    transition: none !important; /* Evita que la plantilla aplique efectos de escala al hacer clic */
   }
 
   /* Forzamos al contenedor de Mermaid a ser un bloque centrado */
@@ -77,21 +79,6 @@
     margin-bottom: 10px;
   }
   .footer-logo:hover { opacity: 1; filter: grayscale(0%); }
-
-.search-label {
-    font-size: 0 !important;
-  }
-  .search-label::before {
-    content: "Buscar en ConsDev...";
-    font-size: 14px !important;
-    color: #888;
-    visibility: visible;
-  }
-  
-  /* Aseguramos que el input no muestre el placeholder en inglés */
-  .search-input::placeholder {
-    color: transparent !important;
-  }
 
   /* --- 4. Limpieza del Índice (TOC) --- */
   h2.text-delta, h2.text-delta + ul, hr {
