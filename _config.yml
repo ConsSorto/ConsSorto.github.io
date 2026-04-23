@@ -11,6 +11,8 @@ search_enabled: true
 has_mermaid: true
 mermaid:
   version: "10"
+  "theme": "neutral"
+
 
 # Estética
 color_scheme: dark
