@@ -4,7 +4,22 @@
   .main-content img { display: block; margin: 2rem auto; max-width: 85%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
   h1, h2, h3, h4 { text-align: left; }
 
-  /* --- 2. Centrado de Mermaid (El Fix Definitivo) --- */
+/* --- Logo del Sidebar: Grande y Visible --- */
+  .site-header {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
+
+  .site-logo {
+    max-height: 140px !important; /* Aumentamos el límite */
+    width: 140px !important;      /* Forzamos el ancho */
+    margin: 0 auto !important;
+    display: block !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+  }
+
   /* Forzamos al contenedor de Mermaid a ser un bloque centrado */
   code.language-mermaid { 
     display: block !important; 
