@@ -45,7 +45,7 @@ C ofrece una rica colección de operadores para transformar datos:
     *   `n++` (Posfijo): Primero entrega el valor actual, luego incrementa.
 *   **Relacionales y Lógicos (Capítulo 4, Secciones 4.5 y 4.6):** Se usan para comparar. En C, **0 es Falso y cualquier otro número es Verdadero**.
     *   **&& (AND):** Verdadero solo si ambos son ciertos.
-    *   **|| (OR):** Verdadero si al menos uno es cierto.
+    *   **\|\| (OR):** Verdadero si al menos uno es cierto.
     *   **! (NOT):** Invierte el valor (lo que es cierto lo hace falso).
 
 ### 5. Conversión de tipos (Cast)
