@@ -10,7 +10,8 @@
     align-items: center !important;
     padding: 0 !important; /* Eliminamos el padding que generaba espacio extra */
     border-bottom: none !important;
-    height: auto !important; /* Permite que el contenedor crezca con el logo */
+    height: auto !important; 
+    max-height: none !important; /* ¡ESTO rompe el límite de 60px que causaba el montado! */
     min-height: 0 !important;
   }
   
@@ -25,15 +26,16 @@
 
   .site-logo {
     width: 100% !important; 
-    height: 200px !important; /* Tamaño grande pero más equilibrado */
-    min-height: 200px !important;
+    height: 160px !important; /* Bajamos de 200 a 160 para que no haya tanto espacio vacío */
+    min-height: 160px !important;
     display: block !important;
+    margin-top: 15px !important; /* Un pequeño margen superior para que respire */
   }
 
   /* Aseguramos que la imagen inyectada por la plantilla respete el tamaño */
   .site-logo img, .site-title img {
-    height: 200px !important;
-    max-height: 200px !important;
+    height: 160px !important;
+    max-height: 160px !important;
     width: auto !important;
     display: block !important;
     margin: 0 auto !important;
