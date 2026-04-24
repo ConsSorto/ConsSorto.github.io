@@ -30,19 +30,20 @@
   }
 
   .site-logo {
-    width: 100% !important; 
-    height: 160px !important; /* Bajamos de 200 a 160 para que no haya tanto espacio vacío */
-    min-height: 160px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    margin: 15px 0 !important; /* Un pequeño margen para que respire */
+    padding: 1.5rem 0 !important; /* Espaciado interno en lugar de altura fija */
+    overflow: hidden !important; /* Evita que cualquier residuo visual se salga */
   }
 
   /* Aseguramos que la imagen inyectada por la plantilla respete el tamaño */
   .site-logo img, .site-title img {
-    height: 160px !important;
-    max-height: 160px !important;
+    max-width: 80% !important; /* Un poco más pequeño para garantizar el centrado */
+    max-height: 140px !important; /* Altura controlada para evitar desbordamiento */
     width: auto !important;
     display: block !important;
     margin: 0 auto !important;
