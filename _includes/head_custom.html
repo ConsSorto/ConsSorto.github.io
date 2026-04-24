@@ -9,11 +9,11 @@
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: 0 !important; /* Eliminamos el padding que generaba espacio extra */
+    padding: 25px 0 !important; /* Espacio para que el logo no se pegue al borde superior ni al menú */
     border-bottom: none !important;
     height: auto !important; 
-    max-height: none !important; /* ¡ESTO rompe el límite de 60px que causaba el montado! */
-    min-height: 0 !important;
+    max-height: none !important; 
+    min-height: 100px !important;
     width: 100% !important;
   }
   
@@ -36,14 +36,14 @@
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    padding: 1.5rem 0 !important; /* Espaciado interno en lugar de altura fija */
+    padding: 0 !important; 
     overflow: hidden !important; /* Evita que cualquier residuo visual se salga */
   }
 
   /* Aseguramos que la imagen inyectada por la plantilla respete el tamaño */
   .site-logo img, .site-title img {
-    max-width: 80% !important; /* Un poco más pequeño para garantizar el centrado */
-    max-height: 140px !important; /* Altura controlada para evitar desbordamiento */
+    max-width: 90% !important; 
+    max-height: 130px !important; /* Altura controlada para que no se monte en el nav */
     width: auto !important;
     display: block !important;
     margin: 0 auto !important;
