@@ -8,29 +8,35 @@
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
+    justify-content: center !important;
     padding: 0 !important; /* Eliminamos el padding que generaba espacio extra */
     border-bottom: none !important;
     height: auto !important; 
     max-height: none !important; /* ¡ESTO rompe el límite de 60px que causaba el montado! */
     min-height: 0 !important;
+    width: 100% !important;
   }
   
-  
   .site-header .site-title {
-    display: block !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
     width: 100% !important;
     max-width: 100% !important; 
     margin: 0 !important; /* Eliminamos márgenes para pegar el logo a los bordes */
     padding: 0 !important;
     transition: none !important;
+    text-align: center !important;
   }
 
   .site-logo {
     width: 100% !important; 
     height: 160px !important; /* Bajamos de 200 a 160 para que no haya tanto espacio vacío */
     min-height: 160px !important;
-    display: block !important;
-    margin-top: 15px !important; /* Un pequeño margen superior para que respire */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 15px 0 !important; /* Un pequeño margen para que respire */
   }
 
   /* Aseguramos que la imagen inyectada por la plantilla respete el tamaño */
