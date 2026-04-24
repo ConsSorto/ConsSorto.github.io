@@ -1,4 +1,33 @@
 <style>
+  /* --- 0. Ajuste Maestro de Logo y Header --- */
+  .site-header {
+    display: flex !important;
+    flex-direction: column !important; /* Apilamos verticalmente para centrar mejor */
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 2rem 0 !important; /* Espacio arriba y abajo del logo */
+    height: auto !important;
+    min-height: 200px !important; /* Suficiente espacio para que no se salga */
+    width: 100% !important;
+  }
+
+  .site-title {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin-right: 0 !important; /* Quitamos márgenes que lo tiran a la izquierda */
+  }
+
+  .site-logo {
+    width: 180px !important;  /* Ajusta este tamaño a tu gusto (Ancho) */
+    height: 180px !important; /* Ajusta este tamaño a tu gusto (Alto) */
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    margin: 0 auto !important;
+  }
+
   /* --- 1. Justificado y Estética de Imágenes --- */
   .main-content p, .main-content li { text-align: justify; hyphens: auto; }
   .main-content img { display: block; margin: 2rem auto; max-width: 85%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
