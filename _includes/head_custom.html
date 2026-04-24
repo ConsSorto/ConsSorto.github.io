@@ -3,9 +3,9 @@
   .site-header {
     display: flex !important;
     flex-direction: column !important; /* Apilamos verticalmente para centrar mejor */
-    align-items: center !important;
+    align-items: flex-end !important; /* Movemos el contenido hacia la derecha */
     justify-content: center !important;
-    padding: 2rem 0 !important; /* Espacio arriba y abajo del logo */
+    padding: 2rem 1.5rem 2rem 0 !important; /* 1.5rem de padding a la derecha */
     height: auto !important;
     min-height: 200px !important; /* Suficiente espacio para que no se salga */
     width: 100% !important;
@@ -13,7 +13,7 @@
 
   .site-title {
     display: flex !important;
-    justify-content: center !important;
+    justify-content: flex-end !important; /* Alineamos el contenido del link a la derecha */
     align-items: center !important;
     width: 100% !important;
     margin-right: 0 !important; /* Quitamos márgenes que lo tiran a la izquierda */
@@ -23,9 +23,9 @@
     width: 180px !important;  /* Ajusta este tamaño a tu gusto (Ancho) */
     height: 180px !important; /* Ajusta este tamaño a tu gusto (Alto) */
     background-size: contain !important;
-    background-position: center !important;
+    background-position: right center !important; /* Imagen de fondo alineada a la derecha */
     background-repeat: no-repeat !important;
-    margin: 0 auto !important;
+    margin: 0 !important; /* Quitamos el auto para que no se centre */
   }
 
   /* --- 1. Justificado y Estética de Imágenes --- */
