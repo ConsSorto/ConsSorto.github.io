@@ -11,10 +11,10 @@
     justify-content: center !important;
     padding: 25px 0 !important; /* Espacio para que el logo no se pegue al borde superior ni al menú */
     border-bottom: none !important;
-    height: auto !important; 
-    max-height: none !important; 
-    min-height: 100px !important;
+    height: 180px !important; /* Altura fija para el cabezal para evitar solapamientos */
+    max-height: 180px !important; 
     width: 100% !important;
+    overflow: hidden !important;
   }
   
   .site-header .site-title {
@@ -31,11 +31,14 @@
 
   .site-logo {
     width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
+    height: 120px !important; /* Esencial: si es div vacío, necesita altura para mostrar el fondo */
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    margin: 0 auto !important;
     padding: 0 !important; 
     overflow: hidden !important; /* Evita que cualquier residuo visual se salga */
   }
@@ -43,7 +46,7 @@
   /* Aseguramos que la imagen inyectada por la plantilla respete el tamaño */
   .site-logo img, .site-title img {
     max-width: 90% !important; 
-    max-height: 130px !important; /* Altura controlada para que no se monte en el nav */
+    max-height: 120px !important; /* Altura controlada para que no se monte en el nav */
     width: auto !important;
     display: block !important;
     margin: 0 auto !important;
