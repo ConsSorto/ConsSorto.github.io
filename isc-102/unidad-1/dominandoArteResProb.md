@@ -1,13 +1,13 @@
 ---
 layout: default
-title: "Bloque 0: Dominando el Arte de Resolver Problemas"
+title: "0: Dominando el Arte de Resolver Problemas"
 parent: "Unidad I: Introducción y Lógica de Programación"
 nav_order: 2
 has_mermaid: true 
 ---
 
-# 📘 Unidad I: Introducción y Lógica de Programación
-## Bloque 0: Dominando el Arte de Resolver Problemas
+
+## 0: Dominando el Arte de Resolver Problemas
 
 # ¡Hola, Mundo! Guía Esencial para Iniciar en la Programación
 

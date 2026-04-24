@@ -1,11 +1,11 @@
 ---
 layout: default
-title: "Bloque 2: Tipos Operadores"
+title: "2: Tipos Operadores"
 parent: "Unidad I: Introducción y Lógica de Programación"
 nav_order: 4
 ---
 
-## Bloque 2: Tipos, Operadores y Expresiones
+## 2: Tipos, Operadores y Expresiones
 
 Este bloque es el "taller" donde definimos nuestras herramientas de trabajo. En C, no basta con dar instrucciones; debemos ser precisos sobre qué datos usamos y cómo los manipulamos.
 

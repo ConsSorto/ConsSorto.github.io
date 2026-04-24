@@ -1,13 +1,12 @@
 ---
 layout: default
-title: "Bloque 1: Funciones y Estructura de un Programa"
+title: "1. Funciones y Estructura de un Programa"
 parent: "Unidad II: Funciones, Arreglos, Punteros y Memoria "
-nav_order: 3
+nav_order: 1
 has_mermaid: true 
 ---
 
-# 📘 Unidad II: Funciones, Arreglos, Punteros y Memoria 
-## Bloque 1: Funciones y Estructura de un Programa
+## 1. Funciones y Estructura de un Programa
 
 Una **función** es un grupo de sentencias diseñadas para realizar una tarea específica. La programación estructurada se basa en dividir un problema grande en módulos pequeños y manejables (Capítulo 7, Sección 7.1).
 
@@ -227,6 +226,7 @@ int main() {
 #### C. El "if" del Preprocesador (Procesamiento Condicional)
 Permite decidir qué partes del código se compilan y cuáles se ignoran. Es vital para evitar que un archivo se incluya más de una vez mediante **guardas de cabecera** (Capítulo 19, Sección 19.3).
 
+
 **Ejemplo de Guardas de Cabecera:**
 ```c
 #ifndef _MI_CABECERA_H
@@ -235,6 +235,36 @@ Permite decidir qué partes del código se compilan y cuáles se ignoran. Es vit
 // Definiciones...
 
 #endif 
+```
+
+**Ejemplo de If para activar depuración:**
+```c
+#define DEBUG 1
+
+#if DEBUG
+    printf("Modo depuración activado\n");
+#else
+    printf("Modo producción\n");
+#endif
+```
+
+**Ejemplo de If para activar caclulos condicionales:**
+```c
+#define TASA_INTERES 25  // Definimos la tasa actual
+
+#if TASA_INTERES > 20
+    #define DESCUENTO 10  // Si el interés es alto, el descuento es 10
+#else
+    #define DESCUENTO 5   // Si no, el descuento es solo 5
+#endif
+
+#include <stdio.h>
+
+int main() {
+    // El compilador no verá "DESCUENTO", verá directamente el número 10
+    printf("El descuento aplicado es del %d%%\n", DESCUENTO);
+    return 0;
+}
 ```
 
 **Resumen de Ventajas:**
