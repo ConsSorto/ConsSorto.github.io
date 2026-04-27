@@ -26,39 +26,6 @@ Dominar las funciones y los punteros es el paso definitivo para convertirte en u
 ---
 *Referencias: Joyanes Aguilar, L. & Zahonero Martínez, I. (2014). Programación en C, C++, Java y UML.*
 
-
-# 🚀 Dinamismo en ConsDev
-
-Ingeniero, esta zona está diseñada para que los alumnos experimenten con el código del **Bloque 3** en tiempo real.
-
----
-
-## 1. JDoodle: Compilador Integrado
-Esta herramienta es perfecta para fragmentos cortos. El alumno puede editar el código aquí mismo y presionar **"Execute"**.
-
-```c
-#include <stdio.h>
-
-int main() {
-    int nota = 85;
-    printf("Evaluando nota: %d\n", nota);
-    
-    if (nota >= 65) {
-        printf("Resultado: Aprobado ✅\n");
-    } else {
-        printf("Resultado: Reprobado ❌\n");
-    }
-    return 0;
-}
-
-```
-
-
-## 2. OnlineGDB: Botón de Lanzamiento (Externo)
-Esta es la opción más limpia visualmente. Muestra el código estático y ofrece un botón llamativo para que el alumno abra el entorno de desarrollo completo en una pestaña nueva.
-
-### Ejemplo: Ciclo for (Suma de Pares)
-<!-- Ya no incluyas el código aquí, el iframe lo hará por ti -->
 <div style="margin: 25px 0; border: 2px solid #BB86FC; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
     <iframe 
         src="{{ site.baseurl }}/compilerc.html?file=https://raw.githubusercontent.com/ConsSorto/ConsSorto.github.io/main/isc-102/unidad-2/example.c" 
@@ -68,8 +35,5 @@ Esta es la opción más limpia visualmente. Muestra el código estático y ofrec
     </iframe>
 </div>
 
-<p style="text-align: center; font-size: 0.8rem; color: #888;">
-    💡 <b>Nota de Sincronización:</b> Si el cuadro inferior no muestra su código, intente abrir esta página en una <b>ventana de incógnito</b> para limpiar el caché de sesión de Godbolt.
-</p>
 
 [⬅️ Volver al índice general de la clase](../index.md)

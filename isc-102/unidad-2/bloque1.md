@@ -16,23 +16,16 @@ Toda función consta de una **cabecera** y un **cuerpo**. La cabecera define el 
 *   **Retorno de valores:** Se utiliza la sentencia `return` para enviar un resultado de vuelta a la función llamadora. Si la función no devuelve nada, se marca como `void` (Capítulo 7, Sección 7.2).
 
 **Ejemplo de Función en C:**
-```c
-#include <stdio.h>
 
-// Prototipo de la función
-int sumar(int a, int b); 
+<div style="margin: 25px 0; border: 2px solid #BB86FC; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+    <iframe 
+        src="{{ site.baseurl }}/compilerc.html?file=https://raw.githubusercontent.com/ConsSorto/ConsSorto.github.io/main/isc-102/unidad-2/ejemplo1-1.c" 
+        width="100%" 
+        height="600px" 
+        frameborder="0">
+    </iframe>
+</div>
 
-int main() {
-    int resultado = sumar(10, 5); // Llamada a la función
-    printf("El resultado es: %d", resultado);
-    return 0;
-}
-
-// Definición de la función
-int sumar(int a, int b) {
-    return a + b; // Retorno del valor
-}
-```
 ### 2. Reglas de Ámbito (Alcance) y Clases de Almacenamiento
 El ámbito o alcance es la zona del programa en la que una variable es visible para las funciones. Según su posición y modificadores, una variable puede tener un ámbito de programa, de archivo fuente, de función o de bloque.
 
