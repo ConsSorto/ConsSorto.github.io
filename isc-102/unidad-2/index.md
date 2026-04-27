@@ -65,15 +65,14 @@ Esta es la opción más limpia visualmente. Muestra el código estático y ofrec
 <div style="margin: 25px 0; border: 1px solid #BB86FC; border-radius: 8px; overflow: hidden;">
     <iframe 
         width="100%" 
-        height="550px" 
+        height="600px" 
         frameborder="0" 
-        src="https://godbolt.org/e?hideEditorToolbars=true&language=c&remote=https://raw.githubusercontent.com/ConsSorto/ConsSorto.github.io/refs/heads/main/isc-102/unidad-2/example.c">
+        src="https://godbolt.org/e?hideEditorToolbars=true&language=c&remote=https://raw.githubusercontent.com/ConsSorto/ConsSorto.github.io/refs/heads/main/isc-102/unidad-2/example.c&execute=true">
     </iframe>
 </div>
 
-
-<div style="margin: 25px 0; border: 1px solid #BB86FC; border-radius: 8px; overflow: hidden;">
-    <script src="https://onlinegdb.com/embed/js/jOZUiBZvp?theme=dark"></script>
-</div>
+<p style="text-align: center; font-size: 0.8rem; color: #888;">
+    💡 <i>Tip: Si el código no carga de inmediato, refresque la página (F5) para limpiar el caché de GitHub.</i>
+</p>
 
 [⬅️ Volver al índice general de la clase](../index.md)
