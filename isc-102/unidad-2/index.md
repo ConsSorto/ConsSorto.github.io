@@ -71,7 +71,7 @@ Esta es la opción más limpia visualmente. Muestra el código estático y ofrec
 </div>
 
 <p style="text-align: center; font-size: 0.8rem; color: #888;">
-    💡 <b>Nota para el alumno:</b> Si el cuadro de arriba no coincide con el de abajo, presiona F5 para refrescar el laboratorio.
+    💡 <b>Nota para el alumno:</b> Si el cuadro inferior muestra un código diferente (ej. 'square'), por favor <b>abre esta página en una ventana de incógnito</b> o limpia el caché de tu navegador para forzar la sincronización con GitHub.
 </p>
 
 [⬅️ Volver al índice general de la clase](../index.md)
