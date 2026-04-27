@@ -58,14 +58,15 @@ int main() {
 Esta es la opción más limpia visualmente. Muestra el código estático y ofrece un botón llamativo para que el alumno abra el entorno de desarrollo completo en una pestaña nueva.
 
 ### Ejemplo: Ciclo for (Suma de Pares)
-```c
-{% include_relative example.c %} 
-```
-
-<iframe 
-    src="/ConsSorto.github.io/compilerc.html?file=https://raw.githubusercontent.com/ConsSorto/ConsSorto.github.io/main/isc-102/unidad-2/example.c" 
-    width="100%" height="600px" frameborder="0">
-</iframe>
+<!-- Ya no incluyas el código aquí, el iframe lo hará por ti -->
+<div style="margin: 25px 0; border: 2px solid #BB86FC; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+    <iframe 
+        src="{{ site.baseurl }}/compilerc.html?file=https://raw.githubusercontent.com/ConsSorto/ConsSorto.github.io/main/isc-102/unidad-2/example.c" 
+        width="100%" 
+        height="600px" 
+        frameborder="0">
+    </iframe>
+</div>
 
 <p style="text-align: center; font-size: 0.8rem; color: #888;">
     💡 <b>Nota de Sincronización:</b> Si el cuadro inferior no muestra su código, intente abrir esta página en una <b>ventana de incógnito</b> para limpiar el caché de sesión de Godbolt.
