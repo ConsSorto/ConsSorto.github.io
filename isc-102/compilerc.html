@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConsDev Interactive Lab</title>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --panel-bg: #1e293b;
+            --accent: #a78bfa; 
+            --text: #f1f5f9;
+            --terminal-bg: #000000;
+            --green: #4ade80;
+            --error: #f87171;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: var(--panel-bg);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #334155;
+        }
+
+        .title-group { display: flex; flex-direction: column; }
+        .label { font-size: 10px; font-weight: bold; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+        .status { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+
+        .run-btn {
+            background-color: var(--accent);
+            color: #1e1b4b;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .run-btn:disabled { background-color: #475569; cursor: not-allowed; }
+
+        .main-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        #editor {
+            flex: 1;
+            background-color: #1a1b26;
+            color: #c0caf5;
+            padding: 20px;
+            font-family: 'Cascadia Code', 'Consolas', monospace;
+            font-size: 14px;
+            border: none;
+            outline: none;
+            resize: none;
+        }
+
+        .terminal-container {
+            height: 160px;
+            background-color: var(--terminal-bg);
+            border-top: 1px solid #334155;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .terminal-header {
+            background-color: #111827;
+            padding: 6px 15px;
+            font-size: 10px;
+            font-weight: bold;
+            color: #64748b;
+            text-transform: uppercase;
+        }
+
+        #console {
+            flex: 1;
+            padding: 12px;
+            margin: 0;
+            font-family: 'Consolas', monospace;
+            font-size: 13px;
+            color: var(--green);
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="title-group">
+            <div class="label">ConsDev Lab - ISC-102</div>
+            <div class="status" id="fileStatus">Sincronizando con GitHub...</div>
+        </div>
+        <button id="runBtn" class="run-btn">
+            <span>EJECUTAR</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+    </div>
+
+    <div class="main-container">
+        <textarea id="editor" spellcheck="false" placeholder="// Cargando código..."></textarea>
+        
+        <div class="terminal-container">
+            <div class="terminal-header">Salida de Consola</div>
+            <pre id="console">Listo.</pre>
+        </div>
+    </div>
+
+    <script>
+        const editor = document.getElementById('editor');
+        const consoleOut = document.getElementById('console');
+        const runBtn = document.getElementById('runBtn');
+        const statusLabel = document.getElementById('fileStatus');
+
+        const GITHUB_URL = 'https://raw.githubusercontent.com/ConsSorto/ConsSorto.github.io/main/isc-102/unidad-2/example.c';
+
+        // Código que se mostrará si falla la conexión con GitHub
+        const FALLBACK_CODE = `#include <stdio.h>\n\nint main() {\n    printf("Error: No se pudo cargar el archivo desde GitHub.\\n");\n    printf("Verifica la conexion o que el archivo sea publico.\\n");\n    return 0;\n}`;
+
+        async function fetchCode() {
+            try {
+                // Añadimos timestamp para evitar caché
+                const response = await fetch(GITHUB_URL + '?t=' + Date.now());
+                if (!response.ok) throw new Error('Status: ' + response.status);
+                
+                const text = await response.text();
+                editor.value = text;
+                statusLabel.innerText = '● example.c sincronizado';
+                statusLabel.style.color = '#4ade80';
+            } catch (error) {
+                console.error('Fetch error:', error);
+                editor.value = FALLBACK_CODE;
+                statusLabel.innerText = '⚠️ Usando modo local (GitHub Offline)';
+                statusLabel.style.color = '#fbbf24';
+            }
+        }
+
+        runBtn.addEventListener('click', async () => {
+            runBtn.disabled = true;
+            consoleOut.innerText = 'Compilando...';
+            consoleOut.style.color = '#94a3b8';
+
+            try {
+                const response = await fetch('https://wandbox.org/api/compile.json', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        code: editor.value,
+                        compiler: 'gcc-head',
+                        save: false
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.program_output) {
+                    consoleOut.innerText = data.program_output;
+                    consoleOut.style.color = '#4ade80';
+                } else if (data.compiler_error) {
+                    consoleOut.innerText = 'ERROR:\n' + data.compiler_error;
+                    consoleOut.style.color = '#f87171';
+                } else {
+                    consoleOut.innerText = 'Proceso finalizado.';
+                }
+            } catch (error) {
+                consoleOut.innerText = 'Error de conexión con el compilador.';
+                consoleOut.style.color = '#f87171';
+            } finally {
+                runBtn.disabled = false;
+            }
+        });
+
+        // Soporte para Tabulador
+        editor.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                e.preventDefault();
+                const s = this.selectionStart;
+                this.value = this.value.substring(0, s) + "    " + this.value.substring(this.selectionEnd);
+                this.selectionEnd = s + 4;
+            }
+        });
+
+        fetchCode();
+    </script>
+</body>
+</html>
