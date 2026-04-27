@@ -66,12 +66,12 @@ Esta es la opción más limpia visualmente. Muestra el código estático y ofrec
         width="100%" 
         height="600px" 
         frameborder="0" 
-        src="https://godbolt.org/e?hideEditorToolbars=true&language=c&remote=https://raw.githubusercontent.com/ConsSorto/ConsSorto.github.io/main/isc-102/unidad-2/example.c">
+        src="https://godbolt.org/e?hideEditorToolbars=true&language=c&remote=https://raw.githubusercontent.com/ConsSorto/ConsSorto.github.io/main/isc-102/unidad-2/example.c&execute=true">
     </iframe>
 </div>
 
 <p style="text-align: center; font-size: 0.8rem; color: #888;">
-    💡 <b>Nota para el alumno:</b> Si el cuadro inferior muestra un código diferente (ej. 'square'), por favor <b>abre esta página en una ventana de incógnito</b> o limpia el caché de tu navegador para forzar la sincronización con GitHub.
+    💡 <b>Nota de Sincronización:</b> Si el cuadro inferior no muestra su código, intente abrir esta página en una <b>ventana de incógnito</b> para limpiar el caché de sesión de Godbolt.
 </p>
 
 [⬅️ Volver al índice general de la clase](../index.md)
