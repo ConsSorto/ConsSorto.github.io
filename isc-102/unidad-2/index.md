@@ -66,7 +66,7 @@ Esta es la opción más limpia visualmente. Muestra el código estático y ofrec
         width="100%" 
         height="600px" 
         frameborder="0" 
-        src="https://godbolt.org/e?hideEditorToolbars=true&language=c&remote=https://cdn.jsdelivr.net/gh/ConsSorto/ConsSorto.github.io@main/isc-102/unidad-2/example.c">
+        src="https://godbolt.org/e?hideEditorToolbars=true&language=c&compiler=gcc141&execute=true&remote=https://raw.githack.com/ConsSorto/ConsSorto.github.io/main/isc-102/unidad-2/example.c">
     </iframe>
 </div>
 
