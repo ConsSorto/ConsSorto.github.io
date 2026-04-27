@@ -61,10 +61,14 @@ Esta es la opción más limpia visualmente. Muestra el código estático y ofrec
 ```c
 {% include_relative example.c %} 
 ```
-<div style="margin: 25px 0; border: 1px solid #BB86FC; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
-    <iframe src="./compilerc.html" width="100%" height="600px" frameborder="0"></iframe>
+<div style="margin: 25px 0; border: 2px solid #BB86FC; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+    <iframe 
+        src="../compilerc.html" 
+        width="100%" 
+        height="600px" 
+        frameborder="0">
+    </iframe>
 </div>
-
 <p style="text-align: center; font-size: 0.8rem; color: #888;">
     💡 <b>Nota de Sincronización:</b> Si el cuadro inferior no muestra su código, intente abrir esta página en una <b>ventana de incógnito</b> para limpiar el caché de sesión de Godbolt.
 </p>
