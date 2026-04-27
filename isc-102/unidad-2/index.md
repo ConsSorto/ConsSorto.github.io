@@ -63,7 +63,7 @@ Esta es la opción más limpia visualmente. Muestra el código estático y ofrec
 ```
 
 <iframe 
-    src="/ConsSorto.github.io/lab-c.html?file=https://raw.githubusercontent.com/ConsSorto/ConsSorto.github.io/main/isc-102/unidad-2/example.c" 
+    src="/ConsSorto.github.io/compilerc.html?file=https://raw.githubusercontent.com/ConsSorto/ConsSorto.github.io/main/isc-102/unidad-2/example.c" 
     width="100%" height="600px" frameborder="0">
 </iframe>
 
