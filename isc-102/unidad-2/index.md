@@ -65,7 +65,7 @@ Esta es la opción más limpia visualmente. Muestra el código estático y ofrec
 
 ### Ejemplo: Ciclo for (Suma de Pares)
 ```c
-{% include_relative assets/code/bloque3/ejemplo1.c %}
+{% include_relative assets/code/isc-102/unidad-2/example.c %}
 ```
 
 <div style="margin: 25px 0; border: 1px solid #BB86FC; border-radius: 8px; overflow: hidden;">
