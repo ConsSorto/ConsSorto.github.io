@@ -52,20 +52,14 @@ int main() {
 }
 
 ```
-<div style="margin: 20px 0; border: 2px solid #BB86FC; border-radius: 12px; overflow: hidden;">
-    <iframe src="https://www.jdoodle.com/embed/v0/4?stdin=0&arg=0" 
-            width="100%" 
-            height="450" 
-            frameborder="0">
-    </iframe>
-</div>
+
 
 ## 2. OnlineGDB: Botón de Lanzamiento (Externo)
 Esta es la opción más limpia visualmente. Muestra el código estático y ofrece un botón llamativo para que el alumno abra el entorno de desarrollo completo en una pestaña nueva.
 
 ### Ejemplo: Ciclo for (Suma de Pares)
 ```c
-{% include_relative assets/code/isc-102/unidad-2/example.c %}
+{% include_relative example.c %} 
 ```
 
 <div style="margin: 25px 0; border: 1px solid #BB86FC; border-radius: 8px; overflow: hidden;">
