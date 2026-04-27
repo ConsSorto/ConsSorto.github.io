@@ -19,7 +19,7 @@ Toda función consta de una **cabecera** y un **cuerpo**. La cabecera define el 
 
 <div style="margin: 25px 0; border: 2px solid #BB86FC; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
     <iframe 
-        src="{{ site.baseurl }}/compilerc.html?file=https://raw.githubusercontent.com/ConsSorto/ConsSorto.github.io/main/isc-102/unidad-2/ejemplo1-1.c" 
+        src="{{ site.baseurl }}/compilerc.html?file=https://raw.githubusercontent.com/ConsSorto/ConsSorto.github.io/main/isc-102/unidad-2/code/ejemplo1-1.c" 
         width="100%" 
         height="600px" 
         frameborder="0">
@@ -33,19 +33,15 @@ El ámbito o alcance es la zona del programa en la que una variable es visible p
 Se declaran fuera de cualquier función, normalmente al principio del archivo fuente. Son visibles para cualquier función del resto del programa. Si se desea usar una variable definida en otro archivo fuente, se utiliza la palabra reservada `extern`.
 
 **Ejemplo de Ámbito de Programa (Capítulo 7, Sección 7.6):**
-```c
-#include <stdio.h>
 
-int Q; // Variable global, ámbito de programa [7]
-
-int main() {
-    int A; // Variable local a main [7]
-    A = 124;
-    Q = 1;
-    printf("Global Q: %d, Local A: %d\n", Q, A);
-    return 0;
-}
-```
+<div style="margin: 25px 0; border: 2px solid #BB86FC; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+    <iframe 
+        src="{{ site.baseurl }}/compilerc.html?file=https://raw.githubusercontent.com/ConsSorto/ConsSorto.github.io/main/isc-102/unidad-2/code/ejemplo1-1.c" 
+        width="100%" 
+        height="600px" 
+        frameborder="0">
+    </iframe>
+</div>
 
 #### Variables Estáticas (`static`)
 A diferencia de las variables automáticas, las estáticas no se borran al terminar la función; retienen su valor entre llamadas sucesivas y se inicializan solo una vez.
@@ -137,25 +133,16 @@ graph TD
 En el caso del factorial de un número ($n!$), la definición recursiva establece que el factorial de 0 o 1 es 1 (**caso base**), y para cualquier otro número es $n \times (n-1)!$.
 
 **Ejemplo de Factorial en C (Recursivo):**
-```c
-#include <stdio.h>
-long factorial(int n); // Prototipo
 
-int main() {
-    int numero = 5;
-    printf("El factorial de %d es: %ld\n", numero, factorial(numero));
-    return 0;
-}
+<div style="margin: 25px 0; border: 2px solid #BB86FC; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+    <iframe 
+        src="{{ site.baseurl }}/compilerc.html?file=https://raw.githubusercontent.com/ConsSorto/ConsSorto.github.io/main/isc-102/unidad-2/code/ejemplo3-1.c" 
+        width="100%" 
+        height="600px" 
+        frameborder="0">
+    </iframe>
+</div>
 
-long factorial(int n) {
-    if (n == 0 || n == 1) {
-        return 1; // Caso base
-    } 
-    else {
-        return n * factorial(n - 1); // Componente recursivo
-    }
-}
-```
 
 **Comportamiento del flujo recursivo:**
 Cuando ejecutamos `factorial(5)`, el programa realiza una serie de llamadas descendentes hasta alcanzar el caso base y luego "rebota" devolviendo los resultados hacia arriba.
@@ -242,23 +229,14 @@ Permite decidir qué partes del código se compilan y cuáles se ignoran. Es vit
 ```
 
 **Ejemplo de If para activar caclulos condicionales:**
-```c
-#define TASA_INTERES 25  // Definimos la tasa actual
-
-#if TASA_INTERES > 20
-    #define DESCUENTO 10  // Si el interés es alto, el descuento es 10
-#else
-    #define DESCUENTO 5   // Si no, el descuento es solo 5
-#endif
-
-#include <stdio.h>
-
-int main() {
-    // El compilador no verá "DESCUENTO", verá directamente el número 10
-    printf("El descuento aplicado es del %d%%\n", DESCUENTO);
-    return 0;
-}
-```
+<div style="margin: 25px 0; border: 2px solid #BB86FC; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+    <iframe 
+        src="{{ site.baseurl }}/compilerc.html?file=https://raw.githubusercontent.com/ConsSorto/ConsSorto.github.io/main/isc-102/unidad-2/code/ejemplo4-1.c" 
+        width="100%" 
+        height="600px" 
+        frameborder="0">
+    </iframe>
+</div>
 
 **Resumen de Ventajas:**
 *   **Velocidad:** Las macros son rápidas porque evitan la sobrecarga de una llamada a función.

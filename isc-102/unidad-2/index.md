@@ -26,14 +26,5 @@ Dominar las funciones y los punteros es el paso definitivo para convertirte en u
 ---
 *Referencias: Joyanes Aguilar, L. & Zahonero Martínez, I. (2014). Programación en C, C++, Java y UML.*
 
-<div style="margin: 25px 0; border: 2px solid #BB86FC; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
-    <iframe 
-        src="{{ site.baseurl }}/compilerc.html?file=https://raw.githubusercontent.com/ConsSorto/ConsSorto.github.io/main/isc-102/unidad-2/example.c" 
-        width="100%" 
-        height="600px" 
-        frameborder="0">
-    </iframe>
-</div>
-
 
 [⬅️ Volver al índice general de la clase](../index.md)
