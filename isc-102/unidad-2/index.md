@@ -79,15 +79,8 @@ int main() {
 
 ```
 
-<div style="text-align: center; margin: 40px 0;">
-    <a href="https://onlinegdb.com/rk-r-0P8_" 
-       target="_blank" 
-       style="display: inline-block; padding: 16px 32px; background-color: #BB86FC; color: #000; text-decoration: none; border-radius: 50px; font-weight: bold; font-family: sans-serif; box-shadow: 0 4px 15px rgba(187, 134, 252, 0.4); transition: 0.3s;">
-       ⚡ EJECUTAR CÓDIGO EN VIVO
-    </a>
-    <p style="font-size: 0.85rem; color: #666; margin-top: 12px; font-style: italic;">
-        (Se abrirá OnlineGDB en una pestaña nueva)
-    </p>
+<div style="margin: 25px 0; border: 1px solid #BB86FC; border-radius: 8px; overflow: hidden;">
+    <script src="https://onlinegdb.com/embed/js/jOZUiBZvp?theme=dark"></script>
 </div>
 
 [⬅️ Volver al índice general de la clase](../index.md)
