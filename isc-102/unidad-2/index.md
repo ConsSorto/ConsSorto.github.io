@@ -65,18 +65,7 @@ Esta es la opción más limpia visualmente. Muestra el código estático y ofrec
 
 ### Ejemplo: Ciclo for (Suma de Pares)
 ```c
-#include <stdio.h>
-
-int main() {
-    int suma = 0;
-    for (int i = 2; i <= 10; i += 2) {
-        suma += i;
-        printf("Sumando %d, total parcial: %d\n", i, suma);
-    }
-    printf("\nResultado final de la suma: %d\n", suma);
-    return 0;
-}
-
+{% include_relative assets/code/bloque3/ejemplo1.c %}
 ```
 
 <div style="margin: 25px 0; border: 1px solid #BB86FC; border-radius: 8px; overflow: hidden;">
