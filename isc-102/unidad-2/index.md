@@ -63,6 +63,16 @@ Esta es la opción más limpia visualmente. Muestra el código estático y ofrec
 ```
 
 <div style="margin: 25px 0; border: 1px solid #BB86FC; border-radius: 8px; overflow: hidden;">
+    <iframe 
+        width="100%" 
+        height="550px" 
+        frameborder="0" 
+        src="https://godbolt.org/e?hideEditorToolbars=true&language=c&remote=https://raw.githubusercontent.com/ConsSorto/ConsSorto.github.io/refs/heads/main/isc-102/unidad-2/example.c">
+    </iframe>
+</div>
+
+
+<div style="margin: 25px 0; border: 1px solid #BB86FC; border-radius: 8px; overflow: hidden;">
     <script src="https://onlinegdb.com/embed/js/jOZUiBZvp?theme=dark"></script>
 </div>
 
