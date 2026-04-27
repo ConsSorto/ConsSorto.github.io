@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConsDev Universal Lab</title>
+    <title>ConsDev Universal Lab v3.0</title>
+    <!-- Prism.js para resaltado de sintaxis -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <style>
         :root {
             --bg-dark: #0f172a;
@@ -13,12 +15,13 @@
             --terminal-bg: #000000;
             --green: #4ade80;
             --error: #f87171;
+            --editor-bg: #1a1b26;
         }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', system-ui, sans-serif;
             background-color: var(--bg-dark);
             color: var(--text);
             display: flex;
@@ -34,6 +37,7 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #334155;
+            z-index: 10;
         }
 
         .title-group { display: flex; flex-direction: column; }
@@ -62,27 +66,78 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            position: relative;
+        }
+
+        /* Contenedor del Editor con Resaltado */
+        .editor-wrapper {
+            flex: 1;
+            position: relative;
+            background-color: var(--editor-bg);
+            overflow: hidden;
+        }
+
+        #editor, #highlight-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 20px;
+            padding-left: 50px; /* Espacio para números de línea */
+            border: none;
+            box-sizing: border-box;
+            font-family: 'Cascadia Code', 'Consolas', 'Monaco', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            white-space: pre;
+            tab-size: 4;
+            overflow: auto;
         }
 
         #editor {
-            flex: 1;
-            background-color: #1a1b26;
-            color: #c0caf5;
-            padding: 15px;
-            font-family: 'Cascadia Code', 'Consolas', monospace;
-            font-size: 14px;
-            border: none;
-            outline: none;
+            color: transparent;
+            background: transparent;
+            caret-color: white; /* Cursor visible */
+            z-index: 2;
             resize: none;
-            line-height: 1.5;
+            outline: none;
+        }
+
+        #highlight-layer {
+            z-index: 1;
+            pointer-events: none;
+            background-color: var(--editor-bg);
+        }
+
+        /* Números de línea */
+        .line-numbers-sidebar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 100%;
+            background-color: #16161e;
+            border-right: 1px solid #292e42;
+            z-index: 3;
+            padding-top: 20px;
+            text-align: right;
+            padding-right: 10px;
+            font-family: monospace;
+            font-size: 13px;
+            color: #444b6a;
+            pointer-events: none;
+            user-select: none;
         }
 
         .terminal-container {
-            height: 160px;
+            height: 180px;
             background-color: var(--terminal-bg);
-            border-top: 1px solid #334155;
+            border-top: 2px solid #1e293b;
             display: flex;
             flex-direction: column;
+            z-index: 10;
         }
 
         .terminal-header {
@@ -104,14 +159,22 @@
             overflow-y: auto;
             white-space: pre-wrap;
         }
+
+        /* Ajustes de Prism para que encaje con el editor */
+        code[class*="language-"], pre[class*="language-"] {
+            background: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            text-shadow: none !important;
+        }
     </style>
 </head>
 <body>
 
     <div class="header">
         <div class="title-group">
-            <div class="label">ConsDev Lab v2.1</div>
-            <div class="status" id="fileStatus">Iniciando sistema...</div>
+            <div class="label">ConsDev Lab v3.0</div>
+            <div class="status" id="fileStatus">Sincronizando...</div>
         </div>
         <button id="runBtn" class="run-btn">
             <span>EJECUTAR</span>
@@ -120,29 +183,63 @@
     </div>
 
     <div class="main-container">
-        <textarea id="editor" spellcheck="false" placeholder="// Cargando código fuente..."></textarea>
+        <div class="editor-wrapper">
+            <div class="line-numbers-sidebar" id="lineNumbers">1</div>
+            <textarea id="editor" spellcheck="false" wrap="off"></textarea>
+            <pre id="highlight-layer" aria-hidden="true"><code class="language-c" id="highlight-code"></code></pre>
+        </div>
         
         <div class="terminal-container">
             <div class="terminal-header">Consola de Salida</div>
-            <pre id="console">Listo para compilar.</pre>
+            <pre id="console">Sistema listo.</pre>
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+
     <script>
         const editor = document.getElementById('editor');
+        const highlightCode = document.getElementById('highlight-code');
+        const highlightLayer = document.getElementById('highlight-layer');
+        const lineNumbers = document.getElementById('lineNumbers');
         const consoleOut = document.getElementById('console');
         const runBtn = document.getElementById('runBtn');
         const statusLabel = document.getElementById('fileStatus');
 
-        // Obtener parámetros de la URL
+        // Sincronizar editor y resaltado
+        function updateHighlight() {
+            let text = editor.value;
+            
+            // Reemplazar caracteres especiales para HTML
+            highlightCode.textContent = text + (text.endsWith('\n') ? ' ' : '');
+            Prism.highlightElement(highlightCode);
+
+            // Actualizar números de línea
+            const lines = text.split('\n').length;
+            let lineNumsHtml = '';
+            for (let i = 1; i <= lines; i++) {
+                lineNumsHtml += i + '<br>';
+            }
+            lineNumbers.innerHTML = lineNumsHtml;
+
+            // Sincronizar scroll
+            highlightLayer.scrollTop = editor.scrollTop;
+            highlightLayer.scrollLeft = editor.scrollLeft;
+            lineNumbers.scrollTop = editor.scrollTop;
+        }
+
+        editor.addEventListener('input', updateHighlight);
+        editor.addEventListener('scroll', updateHighlight);
+
+        // Parámetro de archivo
         const params = new URLSearchParams(window.location.search);
         const sourceFile = params.get('file');
 
         async function fetchSource() {
             if (!sourceFile) {
-                editor.value = "// Error: No se proporcionó ninguna URL de archivo.\n// Uso: compilerc.html?file=URL_DEL_ARCHIVO_RAW";
-                statusLabel.innerText = "⚠️ Falta parámetro 'file'";
-                statusLabel.style.color = "#f87171";
+                editor.value = "// Uso: compilerc.html?file=URL_RAW_C";
+                updateHighlight();
                 return;
             }
 
@@ -151,19 +248,17 @@
                 statusLabel.innerText = "Cargando: " + fileName;
                 
                 const response = await fetch(sourceFile + '?t=' + Date.now());
-                if (!response.ok) throw new Error('Error de red');
+                if (!response.ok) throw new Error();
                 
-                const text = await response.text();
-                // Limpiar editor antes de asignar para evitar duplicidad visual
-                editor.value = ""; 
-                editor.value = text;
+                editor.value = await response.text();
+                updateHighlight();
                 
                 statusLabel.innerText = "● " + fileName + " sincronizado";
                 statusLabel.style.color = "#4ade80";
             } catch (error) {
-                editor.value = "// Error al cargar archivo externo.\n// Verifica la conexión o el enlace Raw.";
-                statusLabel.innerText = "⚠️ Error de sincronización";
-                statusLabel.style.color = "#f87171";
+                editor.value = "// Error al cargar desde GitHub.";
+                updateHighlight();
+                statusLabel.innerText = "⚠️ Error de red";
             }
         }
 
@@ -183,30 +278,23 @@
                 });
 
                 const data = await response.json();
-                
-                if (data.program_output) {
-                    consoleOut.innerText = data.program_output;
-                    consoleOut.style.color = "#4ade80";
-                } else if (data.compiler_error) {
-                    consoleOut.innerText = "ERROR DE COMPILACIÓN:\n\n" + data.compiler_error;
-                    consoleOut.style.color = "#f87171";
-                } else {
-                    consoleOut.innerText = "Proceso finalizado sin salida.";
-                }
+                consoleOut.innerText = data.program_output || data.compiler_error || "Ejecución finalizada.";
+                consoleOut.style.color = data.program_output ? "#4ade80" : "#f87171";
             } catch (error) {
-                consoleOut.innerText = "Error: No se pudo contactar al compilador.";
+                consoleOut.innerText = "Error del compilador.";
             } finally {
                 runBtn.disabled = false;
             }
         });
 
-        // Soporte para Tab
+        // Tabulación (4 espacios)
         editor.addEventListener('keydown', function(e) {
             if (e.key === 'Tab') {
                 e.preventDefault();
                 const s = this.selectionStart;
                 this.value = this.value.substring(0, s) + "    " + this.value.substring(this.selectionEnd);
                 this.selectionEnd = s + 4;
+                updateHighlight();
             }
         });
 
