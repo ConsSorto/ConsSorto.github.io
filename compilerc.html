@@ -106,12 +106,16 @@
 
     <div class="header">
         <div class="title-group">
-            <div class="label">ConsDev Lab Pro v4.0</div>
+            <div class="label">ConsDev Lab C</div>
             <div class="status" id="fileStatus">Cargando motor Monaco...</div>
         </div>
         <button id="runBtn" class="run-btn">
             <span>EJECUTAR</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        <svg id="runIcon" width="22" height="22" viewBox="0 0 24 24" fill="white">
+                <path d="M21 3L14.5 9.5M21 3L17.5 13L14.5 14.5L13 17.5L9.5 14.5L3 21L21 3Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M12 9L15 12" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="16.5" cy="7.5" r="1.5" fill="rgba(0,0,0,0.2)"/>
+            </svg>
         </button>
     </div>
 
@@ -120,7 +124,7 @@
         <div id="monaco-editor-container"></div>
         
         <div class="terminal-container">
-            <div class="terminal-header">Consola de Salida (Wandbox API)</div>
+            <div class="terminal-header">Consola de Salida</div>
             <pre id="console">Terminal lista.</pre>
         </div>
     </div>
