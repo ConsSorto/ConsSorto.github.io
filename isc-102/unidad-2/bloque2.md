@@ -228,10 +228,11 @@ Representa la estructura de tabla con índices de fila y columna (Capítulo 8, F
 ```mermaid
 %%{init: {'theme': 'dark', 'themeVariables': { 'lineColor': '#BB86FC', 'primaryColor': '#3700B3', 'nodeBorder': '#03DAC6' }}}%%
 graph TD
-    subgraph Matriz_Logica [Matriz 3x2]
-    R0C0[matriz[0][0]: 1] --- R0C1[matriz[0][1]: 2] --- R0C2[matriz[0][2]: 3]
-    R1C0[matriz[1][0]: 4] --- R1C1[matriz[1][1]: 5] --- R1C2[matriz[1][2]: 6]
+    subgraph Matriz_Logica ["Matriz 3x2"]
+    R0C0["matriz[0][0]: 1"] --- R0C1["matriz[0][1]: 2"] --- R0C2["matriz[0][2]: 3"]
+    R1C0["matriz[1][0]: 4"] --- R1C1["matriz[1][1]: 5"] --- R1C2["matriz[1][2]: 6"]
     end
+    
     
     style Matriz_Logica fill:#f9f9f9,stroke:#333,stroke-width:2px
 ```
@@ -328,5 +329,28 @@ int suma(int a, int b) { return a + b; }
 int (*ptr_func)(int, int) = suma; // Asigna la dirección de la función
 int res = ptr_func(5, 10);        // Llamada indirecta
 ```
+
+### 10. Resumen Punteros 
+
+<div style="margin: 25px 0; border: 2px solid #BB86FC; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+    <iframe 
+        src="{{ site.baseurl }}/compilerc.html?file=https://raw.githubusercontent.com/ConsSorto/ConsSorto.github.io/main/isc-102/unidad-2/code/resumenpunteros.c" 
+        width="100%" 
+        height="600px" 
+        frameborder="0">
+    </iframe>
+</div>
+
+### 11. Punteros Referencia
+
+<div style="margin: 25px 0; border: 2px solid #BB86FC; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+    <iframe 
+        src="{{ site.baseurl }}/compilerc.html?file=https://raw.githubusercontent.com/ConsSorto/ConsSorto.github.io/main/isc-102/unidad-2/code/punterosreferencia.c" 
+        width="100%" 
+        height="600px" 
+        frameborder="0">
+    </iframe>
+</div>
+
 
 [⬅️ Volver al índice de la clase](./index.md)
