@@ -94,4 +94,4 @@ Programar no es solo aprender reglas de escritura, sino desarrollar un **razonam
 
 **¿Estás listo para escribir tu primer programa?**
 ---
-[⬅️ Volver al índice de la clase](./index.md)
+[⬅️ Volver al índice de la unidad](./index.md)

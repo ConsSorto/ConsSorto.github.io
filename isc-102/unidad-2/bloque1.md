@@ -242,4 +242,4 @@ Permite decidir qué partes del código se compilan y cuáles se ignoran. Es vit
 *   **Velocidad:** Las macros son rápidas porque evitan la sobrecarga de una llamada a función.
 *   **Eficiencia:** El procesamiento condicional evita errores de duplicidad en proyectos grandes.
 
-[⬅️ Volver al índice de la clase](./index.md)
+[⬅️ Volver al índice de la unidad](./index.md)

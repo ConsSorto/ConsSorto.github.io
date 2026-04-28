@@ -55,4 +55,4 @@ A veces mezclamos peras con manzanas. C puede convertir tipos automáticamente (
 ### 6. Evaluación de Precedencia
 Al igual que en matemáticas, no todas las operaciones se hacen a la vez. Los paréntesis `()` tienen la máxima prioridad, seguidos por la multiplicación y división, y finalmente suma y resta (Capítulo 4, Sección 4.12 y Tabla 4.13). Conocer esto evita errores lógicos donde el resultado no es el esperado por falta de paréntesis.
 
-[⬅️ Volver al índice de la clase](./index.md)
+[⬅️ Volver al índice de la unidad](./index.md)

@@ -352,5 +352,4 @@ int res = ptr_func(5, 10);        // Llamada indirecta
     </iframe>
 </div>
 
-
-[⬅️ Volver al índice de la clase](./index.md)
+[⬅️ Volver al índice de la unidad](./index.md)

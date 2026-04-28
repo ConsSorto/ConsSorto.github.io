@@ -13,4 +13,4 @@ Para entender C, debemos conocer su evolución. C surgió de los lenguajes BCPL 
 Un programa típico en C se organiza mediante **directivas del preprocesador** como `#include` (Capítulo 3, Sección 3.1), declaraciones globales, la **función principal `main()`** y definiciones de otras funciones necesarias para resolver el problema (Capítulo 3, Sección 3.1). 
 Los comentarios, encerrados entre `/* ... */`, son esenciales para documentar el código, aunque el compilador los ignora por completo (Capítulo 3, Sección 3.1).
 
-[⬅️ Volver al índice de la clase](./index.md)
+[⬅️ Volver al índice de la unidad](./index.md)
