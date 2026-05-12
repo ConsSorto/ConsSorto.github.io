@@ -9,7 +9,8 @@ Bienvenido a mi espacio de formación técnica. Aquí comparto el material de mi
 ### 📚 Mis Clases
 * **[ISC-102: Programación Estructurada](./isc-102/index.md)**
     *Fundamentos de C++, Lógica de Programación y Gestión de Memoria.*
-
+* **[IS-702: Analisis y diseño de sistemas](./isc-702-asd/index.md)**
+    *Analisis y diseño de sistemas en entornos agiles.*
 ---
 
 ### 📺 Canal de YouTube @consdev
