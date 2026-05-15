@@ -14,4 +14,7 @@ has_mermaid: true
 **[1: Comprendiendo el Problema del Cliente - El Método Detrás del Análisis ](./1.md)**
 El análisis de sistemas no se trata de computadoras, se trata de **personas y sus problemas**. 
 
+**[2: Cascada vs. Ágil: ¿Por qué el mundo cambió de opinión?](./2.md)**
+En las décadas pasadas, la industria del software intentó copiar los modelos de la ingeniería civil para construir sistemas. Esto nos llevó al **modelo de Cascada**, un proceso secuencial donde no puedes avanzar a la siguiente etapa sin haber terminado la anterior.
+
 [⬅️ Volver al índice general de la clase](../index.md)
