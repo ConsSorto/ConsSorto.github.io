@@ -34,6 +34,8 @@ Aprenderemos a romper las funcionalidades macro o "Épicas" en piezas manejables
 La Historia de Usuario (HU) es nuestra moneda de cambio.
 Aprenderemos a redactarlas bajo el formato **"Como [rol], quiero [acción], para [beneficio]"** y a validarlas usando el modelo INVEST, asegurando que sean independientes, valiosas y testeables.
 
+**[7. TEMAS DE EXPOSICIÓN: El Analista en Entornos Ágiles](./7.md)**
+Objetivo: Investigar y exponer cómo el análisis de sistemas se transforma en agilidad, pasando de la documentación estática a la gestión de valor y calidad continua
 
 ---
 ## Conclusión de la Unidad
