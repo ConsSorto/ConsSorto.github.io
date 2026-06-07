@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConsDev Lab - SQL a Diagrama</title>
+    <style>
+        :root { --bg-dark: #0f172a; --panel-bg: #1e293b; --text: #f1f5f9; }
+        body, html { margin: 0; padding: 0; height: 100%; font-family: system-ui, sans-serif; background-color: var(--bg-dark); color: var(--text); display: flex; flex-direction: column; overflow: hidden; }
+        .header { background-color: var(--panel-bg); padding: 10px 20px; border-bottom: 1px solid #334155; }
+        .title { font-size: 14px; font-weight: bold; color: #a78bfa; text-transform: uppercase; }
+        .status { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+        .workspace { display: flex; flex: 1; height: 100%; }
+        #editor-pane { flex: 1; border-right: 2px solid #334155; display: flex; flex-direction: column; }
+        #monaco-container { flex: 1; width: 100%; }
+        #preview-pane { flex: 1; background-color: #ffffff; display: flex; justify-content: center; align-items: center; position: relative; overflow: auto;}
+        #diagram-output { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; }
+        #error-overlay { position: absolute; bottom: 20px; left: 20px; right: 20px; background-color: #ef4444; color: white; padding: 10px; border-radius: 6px; font-size: 12px; font-family: monospace; display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div>
+            <div class="title">ConsDev Lab: SQL to ER Diagram</div>
+            <div class="status" id="status">Cargando editor...</div>
+        </div>
+    </div>
+
+    <div class="workspace">
+        <div id="editor-pane">
+            <div id="monaco-container"></div>
+        </div>
+        <div id="preview-pane">
+            <div id="diagram-output"></div>
+            <div id="error-overlay"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+
+    <script>
+        let editor;
+        const diagramOutput = document.getElementById('diagram-output');
+        const errorOverlay = document.getElementById('error-overlay');
+        const statusLabel = document.getElementById('status');
+
+        mermaid.initialize({ startOnLoad: false, theme: 'default' });
+
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs' }});
+        require(['vs/editor/editor.main'], async function() {
+            
+            // 1. LÓGICA PARA LEER EL ARCHIVO DESDE LA URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const fileUrl = urlParams.get('file');
+            
+            let initialCode = "-- Escribe tu código SQL aquí\\n";
+
+            if (fileUrl) {
+                statusLabel.innerText = "Descargando archivo SQL...";
+                try {
+                    const response = await fetch(fileUrl);
+                    if (response.ok) {
+                        initialCode = await response.text();
+                    } else {
+                        initialCode = "-- Error: No se pudo cargar el archivo desde Github.\\n-- Verifica que el enlace RAW sea correcto.";
+                    }
+                } catch (error) {
+                    initialCode = "-- Error de red al intentar descargar el archivo.";
+                }
+            } else {
+                // Código por defecto si no se pasa el parámetro ?file=
+                initialCode = `CREATE TABLE ESTUDIANTES (\\n    ID_Estudiante INT PRIMARY KEY,\\n    Nombre VARCHAR(100)\\n);`;
+            }
+
+            statusLabel.innerText = "Listo. Escribe para renderizar en vivo.";
+
+            // 2. INICIALIZAR MONACO CON EL CÓDIGO DESCARGADO
+            editor = monaco.editor.create(document.getElementById('monaco-container'), {
+                value: initialCode,
+                language: 'sql',
+                theme: 'vs-dark',
+                automaticLayout: true,
+                minimap: { enabled: false },
+                fontSize: 14
+            });
+
+            updateDiagram();
+
+            let timeout;
+            editor.onDidChangeModelContent(() => {
+                clearTimeout(timeout);
+                timeout = setTimeout(updateDiagram, 600);
+            });
+        });
+
+        // ==========================================
+        // TRADUCTOR DE SQL A MERMAID (Mantenemos el mismo)
+        // ==========================================
+        function sqlToMermaid(sql) {
+            let mermaidCode = "classDiagram\\n    direction LR\\n\\n";
+            const tableRegex = /CREATE\\s+TABLE\\s+(\\w+)\\s*\\(([\\s\\S]*?)\\);/gi;
+            let match;
+
+            while ((match = tableRegex.exec(sql)) !== null) {
+                const tableName = match[1];      
+                const columnsText = match[2];    
+                mermaidCode += \`    class \${tableName} {\\n\`;
+
+                const lines = columnsText.split('\\n');
+                for (let line of lines) {
+                    let col = line.trim();
+                    if (col.endsWith(',')) col = col.slice(0, -1);
+                    if (!col) continue; 
+                    
+                    const parts = col.split(/\\s+/); 
+                    if (parts.length >= 2) {
+                        const colName = parts[0];
+                        const colType = parts[1];
+                        
+                        let constraint = "-";
+                        if (col.toUpperCase().includes("PRIMARY KEY")) constraint = "PK";
+                        else if (col.toUpperCase().includes("UNIQUE")) constraint = "Unique";
+                        else if (col.toUpperCase().includes("FOREIGN KEY")) constraint = "FK"; // Agregué soporte básico FK
+                        
+                        mermaidCode += \`        \${constraint} \${colName} : \${colType}\\n\`;
+                    }
+                }
+                mermaidCode += \`    }\\n\\n\`;
+            }
+            return mermaidCode;
+        }
+
+        async function updateDiagram() {
+            const sqlCode = editor.getValue();
+            const mermaidCode = sqlToMermaid(sqlCode);
+            try {
+                const { svg } = await mermaid.render('mermaid-svg', mermaidCode);
+                diagramOutput.innerHTML = svg;
+                errorOverlay.style.display = 'none';
+            } catch (err) {
+                errorOverlay.innerText = "Error en la sintaxis SQL o tabla incompleta...";
+                errorOverlay.style.display = 'block';
+                const ghostNode = document.getElementById('mermaid-svg');
+                if(ghostNode) ghostNode.remove();
+            }
+        }
+    </script>
+</body>
+</html>
