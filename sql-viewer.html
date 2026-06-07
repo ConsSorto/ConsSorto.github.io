@@ -105,46 +105,64 @@
             });
         });
 
+
         // ==========================================
-        // TRADUCTOR DE SQL A MERMAID 
+        // TRADUCTOR DE SQL A MERMAID (Línea por línea)
         // ==========================================
         function sqlToMermaid(sql) {
             let mermaidCode = "classDiagram\n    direction LR\n\n";
-            const tableRegex = /CREATE\s+TABLE\s+(\w+)\s*\(([\s\S]*?)\);/gi;
-            let match;
+            let inTable = false;
             let foundTables = false;
 
-            while ((match = tableRegex.exec(sql)) !== null) {
-                foundTables = true;
-                const tableName = match[1];      
-                const columnsText = match[2];    
-                mermaidCode += `    class ${tableName} {\n`;
+            // Separamos por saltos de línea (soporta Windows y Linux)
+            const lines = sql.split(/\r?\n/);
 
-                // Uso de /\r?\n/ para soportar archivos creados en Windows y Linux
-                const lines = columnsText.split(/\r?\n/); 
-                for (let line of lines) {
-                    let col = line.trim();
-                    if (col.endsWith(',')) col = col.slice(0, -1);
-                    if (!col) continue; 
+            for (let line of lines) {
+                line = line.trim();
+                
+                // Ignorar líneas vacías o comentarios
+                if (!line || line.startsWith('--')) continue;
+
+                // Detectar inicio de tabla: "CREATE TABLE Nombre"
+                const createMatch = line.match(/CREATE\s+TABLE\s+([a-zA-Z0-9_]+)/i);
+                if (createMatch) {
+                    inTable = true;
+                    foundTables = true;
+                    mermaidCode += `    class ${createMatch[1]} {\n`;
+                    continue;
+                }
+
+                // Detectar fin de tabla (una línea que empieza con paréntesis de cierre)
+                if (inTable && line.startsWith(')')) {
+                    inTable = false;
+                    mermaidCode += `    }\n\n`;
+                    continue;
+                }
+
+                // Procesar columnas dentro de la tabla
+                if (inTable) {
+                    if (line === '(') continue; // Ignorar paréntesis de apertura sueltos
+
+                    let col = line.replace(/,$/, '').trim(); // Quitar la coma al final si existe
                     
-                    const parts = col.split(/\s+/); 
+                    const parts = col.split(/\s+/);
                     if (parts.length >= 2) {
                         const colName = parts[0];
-                        const colType = parts[1];
-                        
+                        const colType = parts[1]; // ej: VARCHAR(100)
+
                         let constraint = "-";
-                        if (col.toUpperCase().includes("PRIMARY KEY")) constraint = "PK";
-                        else if (col.toUpperCase().includes("UNIQUE")) constraint = "Unique";
-                        else if (col.toUpperCase().includes("FOREIGN KEY")) constraint = "FK"; 
-                        
+                        const upperLine = col.toUpperCase();
+                        if (upperLine.includes("PRIMARY KEY")) constraint = "PK";
+                        else if (upperLine.includes("UNIQUE")) constraint = "Unique";
+                        else if (upperLine.includes("FOREIGN KEY")) constraint = "FK";
+
                         mermaidCode += `        ${constraint} ${colName} : ${colType}\n`;
                     }
                 }
-                mermaidCode += `    }\n\n`;
             }
 
             if (!foundTables) {
-                return "classDiagram\n    class Esperando_Codigo {\n        Escribe un CREATE TABLE para ver el diagrama\n    }";
+                return "classDiagram\n    class Info {\n        Escribe_un_CREATE_TABLE_valido\n    }";
             }
 
             return mermaidCode;
@@ -153,12 +171,22 @@
         async function updateDiagram() {
             const sqlCode = editor.getValue();
             const mermaidCode = sqlToMermaid(sqlCode);
+            
+            // ==========================================
+            // DEBUGGER EN CONSOLA (A petición tuya)
+            // ==========================================
+            console.log("=== 1. CÓDIGO SQL LEÍDO ===");
+            console.log(sqlCode);
+            console.log("=== 2. CÓDIGO MERMAID GENERADO ===");
+            console.log(mermaidCode);
+
             try {
                 const { svg } = await mermaid.render('mermaid-svg', mermaidCode);
                 diagramOutput.innerHTML = svg;
                 errorOverlay.style.display = 'none';
             } catch (err) {
-                errorOverlay.innerText = "Error en la sintaxis SQL o tabla incompleta...";
+                console.error("=== 3. ERROR DE PARSEO EN MERMAID ===", err);
+                errorOverlay.innerText = "Error de sintaxis. Abre la consola (F12) para depurar.";
                 errorOverlay.style.display = 'block';
                 const ghostNode = document.getElementById('mermaid-svg');
                 if(ghostNode) ghostNode.remove();
