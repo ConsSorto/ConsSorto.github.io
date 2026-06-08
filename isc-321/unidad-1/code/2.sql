@@ -10,8 +10,9 @@ CREATE TABLE Personas (
 
 -- 2. Tabla de Cuentas (Relación 1:1 con Personas)
 -- El ID de Persona es Unique y FK para asegurar 1 a 1
-CREATE TABLE CuentasEstudiante (
-    NumeroCuenta VARCHAR(20) PRIMARY KEY,
+CREATE TABLE Estudiantes (
+    EstudianteId INT PRIMARY KEY,
+    NumeroCuenta VARCHAR(20) UNIQUE,
     PersonaId INT UNIQUE REFERENCES Personas(Id)
 );
 
@@ -19,7 +20,7 @@ CREATE TABLE CuentasEstudiante (
 CREATE TABLE MediosContacto (
     Id INT PRIMARY KEY,
     PersonaId INT REFERENCES Personas(Id),
-    Tipo VARCHAR(20), -- ej: 'Email' o 'Celular'
+    Tipo VARCHAR(20), 
     Valor VARCHAR(100)
 );
 
@@ -32,7 +33,7 @@ CREATE TABLE Carreras (
 -- 5. Tabla Intermedia (Relación N:M entre Estudiante y Carreras)
 CREATE TABLE Inscripciones (
     Id INT PRIMARY KEY,
-    PersonaId INT REFERENCES Personas(Id),
+    EstudianteId INT REFERENCES Estudiantes(Id),
     CarreraId INT REFERENCES Carreras(Id),
     UNIQUE(PersonaId, CarreraId)
 );
