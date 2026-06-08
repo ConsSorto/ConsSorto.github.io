@@ -1,6 +1,13 @@
 CREATE TABLE Estudiantes(
 Id INTEGER PRIMARY KEY,
-Nombre VARCHAR (100),
-Apellido VARCHAR (100),
-Edad INTEGER
+Nombre1 VARCHAR (100),
+Nombre2 VARCHAR (100),
+Apellido1 VARCHAR (100),
+Apellido2 VARCHAR (100),
+CarreraId INTEGER NOT NULL REFERENCES Carreras(Id)
+);
+
+CREATE TABLE Carreras(
+    Id INTEGER PRIMARY KEY,
+    Nombre VARCHAR UNIQUE
 )
