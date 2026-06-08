@@ -12,6 +12,9 @@ search_enabled: true
 has_mermaid: true
 mermaid:
   version: "10"
+  options:
+      startOnLoad: false
+      securityLevel: 'loose'
 
 lang: "es"
 
