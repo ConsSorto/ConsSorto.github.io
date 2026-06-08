@@ -37,7 +37,7 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10dist/mermaid.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.min.js"></script>
 
 
@@ -179,20 +179,28 @@
             console.log("=== 2. CÓDIGO MERMAID GENERADO ===");
             console.log(mermaidCode);
 
-            diagramOutput.innerHTML = '<div id="mermaid-svg"></div>';            
+            diagramOutput.innerHTML = '';
+            
+            const graphContainer = document.createElement('pre');
+            graphContainer.className = 'mermaid';
+            
+            graphContainer.textContent = mermaidCode; 
+            diagramOutput.appendChild(graphContainer);            
 
             try {
-                mermaid.mermaidAPI.reset(); 
-                const { svg } = await mermaid.render('mermaid-svg', mermaidCode);
-                diagramOutput.innerHTML = svg;
+                if (mermaid.run) {
+                    await mermaid.run({ nodes: [graphContainer] });
+                } else {
+                    mermaid.init(undefined, graphContainer);
+                }
+                
                 errorOverlay.style.display = 'none';
             } catch (err) {
                 console.error("=== 3. ERROR DE PARSEO EN MERMAID ===", err);
-                errorOverlay.innerText = "Error de sintaxis. Abre la consola (F12) para depurar.";
-                diagramOutput.innerHTML = ""; 
+                errorOverlay.innerText = "Error de sintaxis en el diagrama. Verifica el SQL.";
                 errorOverlay.style.display = 'block';
-                const ghostNode = document.getElementById('mermaid-svg');
-                if(ghostNode) ghostNode.remove();
+
+                diagramOutput.innerHTML = "";
             }
         }
     </script>
