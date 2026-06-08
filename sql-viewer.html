@@ -174,21 +174,22 @@
             const sqlCode = editor.getValue();
             const mermaidCode = sqlToMermaid(sqlCode);
             
-            // ==========================================
-            // DEBUGGER EN CONSOLA (A petición tuya)
-            // ==========================================
             console.log("=== 1. CÓDIGO SQL LEÍDO ===");
             console.log(sqlCode);
             console.log("=== 2. CÓDIGO MERMAID GENERADO ===");
             console.log(mermaidCode);
 
+            diagramOutput.innerHTML = '<div id="mermaid-svg"></div>';            
+
             try {
+                mermaid.mermaidAPI.reset(); 
                 const { svg } = await mermaid.render('mermaid-svg', mermaidCode);
                 diagramOutput.innerHTML = svg;
                 errorOverlay.style.display = 'none';
             } catch (err) {
                 console.error("=== 3. ERROR DE PARSEO EN MERMAID ===", err);
                 errorOverlay.innerText = "Error de sintaxis. Abre la consola (F12) para depurar.";
+                diagramOutput.innerHTML = ""; 
                 errorOverlay.style.display = 'block';
                 const ghostNode = document.getElementById('mermaid-svg');
                 if(ghostNode) ghostNode.remove();
