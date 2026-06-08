@@ -3,16 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConsDev Lab - SQL a Diagrama</title>
+    <title>ConsDev Lab - SQL a Diagrama ER</title>
     <style>
-        :root { --bg-dark: #0f172a; --panel-bg: #1e293b; --text: #f1f5f9; --accent: #a78bfa;}
+        :root { 
+            --bg-dark: #0f172a; 
+            --panel-bg: #1e293b; 
+            --text: #f1f5f9; 
+            --accent: #a78bfa;
+            --btn-bg: #334155;
+            --btn-hover: #475569;
+        }
         body, html { margin: 0; padding: 0; height: 100%; font-family: system-ui, sans-serif; background-color: var(--bg-dark); color: var(--text); display: flex; flex-direction: column; overflow: hidden; }
-        .header { background-color: var(--panel-bg); padding: 10px 20px; border-bottom: 1px solid #334155; }
+        
+        .header { 
+            background-color: var(--panel-bg); 
+            padding: 10px 20px; 
+            border-bottom: 1px solid #334155; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+        }
         .title { font-size: 14px; font-weight: bold; color: var(--accent); text-transform: uppercase; }
         .status { font-size: 11px; color: #94a3b8; margin-top: 2px; font-family: monospace; }
+        
+        /* Botón Pro para Ocultar/Mostrar Código */
+        .toggle-btn {
+            background-color: var(--btn-bg);
+            color: var(--text);
+            border: 1px solid #475569;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .toggle-btn:hover { background-color: var(--btn-hover); }
+
         .workspace { display: flex; flex: 1; height: 100%; }
+        
+        /* Panel del Editor */
         #editor-pane { flex: 1; border-right: 2px solid #334155; display: flex; flex-direction: column; }
         #monaco-container { flex: 1; width: 100%; }
+        
+        /* Panel del Diagrama */
         #preview-pane { flex: 1; background-color: #ffffff; display: flex; justify-content: center; align-items: center; position: relative; overflow: auto; }
         #diagram-output { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; padding: 20px;}
         #error-overlay { position: absolute; bottom: 20px; left: 20px; right: 20px; background-color: #ef4444; color: white; padding: 10px; border-radius: 6px; font-size: 12px; font-family: monospace; display: none; }
@@ -25,6 +59,7 @@
             <div class="title">ConsDev Lab: SQL to ER Diagram</div>
             <div class="status" id="status">Iniciando motor...</div>
         </div>
+        <button class="toggle-btn" id="toggle-code-btn" onclick="toggleCodeVisibility()">Ocultar Código</button>
     </div>
 
     <div class="workspace">
@@ -37,24 +72,22 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.min.js"></script>
-
 
     <script>
         let editor;
         const diagramOutput = document.getElementById('diagram-output');
         const errorOverlay = document.getElementById('error-overlay');
         const statusLabel = document.getElementById('status');
+        const toggleBtn = document.getElementById('toggle-code-btn');
+        const editorPane = document.getElementById('editor-pane');
 
-        mermaid.initialize({ startOnLoad: false, 
-            theme: 'default',
-            securityLevel: 'loose'});
+        mermaid.initialize({ startOnLoad: false, theme: 'default' });
 
         require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs' }});
         require(['vs/editor/editor.main'], function() {
             
-            // 1. INICIALIZAR MONACO DE INMEDIATO (Igual que en compilerc.html)
             editor = monaco.editor.create(document.getElementById('monaco-container'), {
                 value: "-- Cargando editor...",
                 language: 'sql',
@@ -64,13 +97,19 @@
                 fontSize: 14
             });
 
-            // 2. FUNCIÓN PARA OBTENER EL ARCHIVO ASÍNCRONAMENTE
             async function fetchSource() {
                 const params = new URLSearchParams(window.location.search);
                 const sourceFile = params.get('file');
+                const hideCodeParam = params.get('hideCode');
+
+                // Aplicar visibilidad inicial por URL antes de cargar el contenido
+                if (hideCodeParam === 'true') {
+                    editorPane.style.display = 'none';
+                    toggleBtn.innerText = 'Ver Código';
+                }
 
                 if (!sourceFile) {
-                    editor.setValue("CREATE TABLE CARRERAS (\n    ID_Carrera INT PRIMARY KEY,\n    Nombre VARCHAR(100)\n);\n\n-- Escribe aquí tus tablas SQL");
+                    editor.setValue("CREATE TABLE EJEMPLO (\n    ID INT PRIMARY KEY,\n    Nombre VARCHAR(100)\n);");
                     statusLabel.innerText = "Modo local: Listo.";
                     updateDiagram();
                     return;
@@ -78,28 +117,23 @@
 
                 try {
                     statusLabel.innerText = "Conectando con archivo...";
-                    // Usamos Date.now() para evitar caché igual que en tu compilador
                     const response = await fetch(sourceFile + '?t=' + Date.now());
-                    
                     if (!response.ok) throw new Error("Archivo no encontrado");
                     
                     const text = await response.text();
                     editor.setValue(text);
                     statusLabel.innerText = "● Archivo sincronizado";
-                    statusLabel.style.color = "#4ade80"; // Verde
+                    statusLabel.style.color = "#4ade80"; 
                 } catch (error) {
-                    // Si falla, no se traba, carga un texto base
-                    editor.setValue("-- Error al cargar desde GitHub.\n-- Revisa la URL Raw.\n\nCREATE TABLE ERROR_DE_RED (\n    ID INT PRIMARY KEY\n);");
+                    editor.setValue("-- Error al cargar el archivo de Github.");
                     statusLabel.innerText = "⚠️ Error de sincronización";
-                    statusLabel.style.color = "#f87171"; // Rojo
+                    statusLabel.style.color = "#f87171"; 
                 }
                 updateDiagram();
             }
 
-            // Ejecutamos la búsqueda del archivo
             fetchSource();
 
-            // 3. LISTENERS
             let timeout;
             editor.onDidChangeModelContent(() => {
                 clearTimeout(timeout);
@@ -107,100 +141,123 @@
             });
         });
 
-
-        // ==========================================
-        // TRADUCTOR DE SQL A MERMAID (Línea por línea)
-        // ==========================================
+        // ===================================================
+        // NUEVO TRADUCTOR: GENERADOR DE erDiagram NATIVO
+        // ===================================================
         function sqlToMermaid(sql) {
-            let mermaidCode = "classDiagram\n    direction LR\n\n";
-            let inTable = false;
-            let foundTables = false;
-
-            // Separamos por saltos de línea (soporta Windows y Linux)
+            let mermaidCode = "erDiagram\n\n";
+            let relationships = ""; 
+            
             const lines = sql.split(/\r?\n/);
+            let inTable = false;
+            let currentTable = "";
+            let foundTables = false;
 
             for (let line of lines) {
                 line = line.trim();
-                
-                // Ignorar líneas vacías o comentarios
                 if (!line || line.startsWith('--')) continue;
 
-                // Detectar inicio de tabla: "CREATE TABLE Nombre"
+                // Capturar inicio de tabla
                 const createMatch = line.match(/CREATE\s+TABLE\s+([a-zA-Z0-9_]+)/i);
                 if (createMatch) {
                     inTable = true;
                     foundTables = true;
-                    mermaidCode += `    class ${createMatch[1]} {\n`;
+                    currentTable = createMatch[1]; 
+                    mermaidCode += `    ${currentTable} {\n`;
                     continue;
                 }
 
-                // Detectar fin de tabla (una línea que empieza con paréntesis de cierre)
+                // Capturar fin de tabla
                 if (inTable && line.startsWith(')')) {
                     inTable = false;
                     mermaidCode += `    }\n\n`;
                     continue;
                 }
 
-                // Procesar columnas dentro de la tabla
+                // Procesar campos internos
                 if (inTable) {
-                    if (line === '(') continue; // Ignorar paréntesis de apertura sueltos
-
-                    let col = line.replace(/,$/, '').trim(); // Quitar la coma al final si existe
+                    if (line === '(') continue; 
                     
+                    let col = line.replace(/,$/, '').trim(); 
+                    col = col.replace(/\s*\(\s*(\d+)\s*\)/g, '($1)');
+                    const upperCol = col.toUpperCase();
+
+                    // --- NUEVA LÓGICA DE CARDINALIDAD ---
+                    const refMatch = col.match(/REFERENCES\s+([a-zA-Z0-9_]+)/i);
+                    if (refMatch) {
+                        const targetTable = refMatch[1];
+                        
+                        // Si la columna es UNIQUE y FK al mismo tiempo = Uno a Uno
+                        if (upperCol.includes("UNIQUE")) {
+                            relationships += `    ${currentTable} ||--|| ${targetTable} : ""\n`;
+                        } 
+                        // Si solo es FK = Muchos a Uno (Pata de gallo)
+                        else {
+                            relationships += `    ${currentTable} }o--|| ${targetTable} : ""\n`;
+                        }
+                    }
+
+                    // Ignorar restricciones declaradas al final de la tabla
+                    if (/^(CONSTRAINT|FOREIGN\s+KEY|PRIMARY\s+KEY|UNIQUE\s*\(|CHECK\s*\()/i.test(col)) {
+                        continue; 
+                    }
+
+                    // PROCESAR COLUMNAS NORMALES
                     const parts = col.split(/\s+/);
                     if (parts.length >= 2) {
                         const colName = parts[0];
-                        const colType = parts[1]; // ej: VARCHAR(100)
+                        let colType = parts[1].replace(/\(\d+\)/g, ''); 
 
-                        let constraint = "-";
-                        const upperLine = col.toUpperCase();
-                        if (upperLine.includes("PRIMARY KEY")) constraint = "PK";
-                        else if (upperLine.includes("UNIQUE")) constraint = "Unique";
-                        else if (upperLine.includes("FOREIGN KEY")) constraint = "FK";
+                        let key = "";
+                        if (upperCol.includes("PRIMARY KEY")) key = "PK";
+                        else if (upperCol.includes("FOREIGN KEY") || upperCol.includes("REFERENCES")) key = "FK";
+                        else if (upperCol.includes("UNIQUE")) key = "UK"; 
 
-                        mermaidCode += `        ${constraint} ${colName} : ${colType}\n`;
+                        mermaidCode += `        ${colType} ${colName} ${key}\n`;
                     }
                 }
             }
 
-            if (!foundTables) {
-                return "classDiagram\n    class Info {\n        Escribe_un_CREATE_TABLE_valido\n    }";
-            }
-
-            return mermaidCode;
+            if (!foundTables) return "erDiagram\n    ERROR {\n        string Escribe_SQL_valido\n    }";
+            
+            return mermaidCode + relationships; 
         }
 
-        async function updateDiagram() {
+        // Renderizador Robusto v9
+        function updateDiagram() {
             const sqlCode = editor.getValue();
             const mermaidCode = sqlToMermaid(sqlCode);
             
-            console.log("=== 1. CÓDIGO SQL LEÍDO ===");
-            console.log(sqlCode);
-            console.log("=== 2. CÓDIGO MERMAID GENERADO ===");
+            console.log("=== CÓDIGO MERMAID ER GENERADO ===");
             console.log(mermaidCode);
 
             diagramOutput.innerHTML = '';
             
-            const graphContainer = document.createElement('pre');
-            graphContainer.className = 'mermaid';
-            
-            graphContainer.textContent = mermaidCode; 
-            diagramOutput.appendChild(graphContainer);            
-
             try {
-                if (mermaid.run) {
-                    await mermaid.run({ nodes: [graphContainer] });
-                } else {
-                    mermaid.init(undefined, graphContainer);
-                }
-                
-                errorOverlay.style.display = 'none';
+                mermaid.mermaidAPI.render('mermaid-svg-temp', mermaidCode, function(svgCode) {
+                    diagramOutput.innerHTML = svgCode;
+                    errorOverlay.style.display = 'none';
+                });
             } catch (err) {
-                console.error("=== 3. ERROR DE PARSEO EN MERMAID ===", err);
-                errorOverlay.innerText = "Error de sintaxis en el diagrama. Verifica el SQL.";
+                errorOverlay.innerText = "Error de sintaxis SQL. Esperando código completo...";
                 errorOverlay.style.display = 'block';
+                const ghostNode = document.getElementById('mermaid-svg-temp');
+                if(ghostNode) ghostNode.remove();
+            }
+        }
 
-                diagramOutput.innerHTML = "";
+        // ===================================================
+        // INTERACCIÓN DE INTERFAZ: MOSTRAR / OCULTAR CÓDIGO
+        // ===================================================
+        function toggleCodeVisibility() {
+            if (editorPane.style.display === 'none') {
+                editorPane.style.display = 'flex';
+                toggleBtn.innerText = 'Ocultar Código';
+                // Obligar a Monaco a recalcular su tamaño al volver a ser visible
+                if (editor) editor.layout(); 
+            } else {
+                editorPane.style.display = 'none';
+                toggleBtn.innerText = 'Ver Código';
             }
         }
     </script>
