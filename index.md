@@ -13,6 +13,8 @@ Bienvenido a mi espacio de formación técnica. Aquí comparto el material de mi
     *Analisis y diseño de sistemas en entornos agiles.*
 * **[ISC-321: Fundamentos de Base de datos](./isc-321/index.md)**
     *Analisis y diseño de sistemas en entornos agiles.*
+* **[IS-912: Sistemas Expertos (Programacion Web)](./is-912/index.md)**
+    *Desarrollo Web Moderno, Arquitectura Limpia y APIs.*
 ---
 s
 ### 📺 Canal de YouTube @consdev
