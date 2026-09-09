@@ -9,7 +9,7 @@ has_mermaid: true
 # 📘 Fase 1: Arquitectura Limpia, Datos y API Core
 
 ## Introducción
-En esta primera fase, estableceremos las bases para el desarrollo moderno del backend, utilizando Arquitectura Limpia y los principios de API-First. Exploraremos desde los conceptos básicos de Cliente-Servidor hasta la creación de APIs robustas usando .NET, implementando inyección de dependencias, Entity Framework como ORM y aplicando los principios SOLID.
+Bienvenido a la Fase 1 del proyecto HabitForge. Durante estas semanas, sentaremos las bases de nuestro backend utilizando C# y .NET. Pasaremos de conceptos fundamentales a una arquitectura empresarial moderna.
 
 ---
 
@@ -18,7 +18,7 @@ En esta primera fase, estableceremos las bases para el desarrollo moderno del ba
 **[1. Intro a Web, Cliente-Servidor y Arquitectura API-First](./1.md)**
 Visión general del ecosistema moderno, separación de responsabilidades (Front/Back) y definición de las historias de usuario para el proyecto.
 
-**[2. Principios SOLID e Inyección de Dependencias (DI)](./2.md)**
+**[2. Principios SOLID y Código Limpio](./2.md)**
 Principios SOLID aplicados al backend y cómo Inversión de Dependencias dicta la inyección de servicios.
 
 **[3. Setup Backend (.NET) y Clean Architecture](./3.md)**
