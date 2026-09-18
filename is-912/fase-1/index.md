@@ -1,15 +1,15 @@
 ---
 layout: default
-title: "Fase 1: Arquitectura Limpia, Datos y API Core"
+title: "UNIDAD 1: Arquitectura Limpia, Datos y API Core"
 parent: "IS-912 Sistemas Expertos (Programacion Web)"
 nav_order: 1
 has_mermaid: true 
 ---
 
-# 📘 Fase 1: Arquitectura Limpia, Datos y API Core
+# 📘 UNIDAD 1: Arquitectura Limpia, Datos y API Core
 
 ## Introducción
-Bienvenido a la Fase 1 del proyecto **HabitForge**. Durante estas semanas, sentaremos las bases de nuestro backend utilizando C# y .NET (utilizando la versión estable más reciente, .NET 9+). Pasaremos de conceptos fundamentales a una arquitectura empresarial moderna basada en un enfoque de Monorepo.
+Bienvenido a la UNIDAD 1 del proyecto **HabitForge**. Durante estas semanas, sentaremos las bases de nuestro backend utilizando C# y .NET (utilizando la versión estable más reciente, .NET 9+). Pasaremos de conceptos fundamentales a una arquitectura empresarial moderna basada en un enfoque de Monorepo.
 
 ---
 

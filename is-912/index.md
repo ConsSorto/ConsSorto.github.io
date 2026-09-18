@@ -11,8 +11,8 @@ Este es el repositorio de contenido para la clase. Aquí seguiremos el sílabo o
 
 ### Contenido Académico
 *   **[🚀 Proyecto Integrador: HabitForge](./proyecto/index.md)**
-1.  **[Fase 1: Arquitectura Limpia, Datos y API Core](./fase-1/index.md)**
-2.  **[Fase 2: Seguridad y Cierre del Backend (Inicio)](./fase-2/index.md)**
+1.  **[UNIDAD 1: Arquitectura Limpia, Datos y API Core](./fase-1/index.md)**
+2.  **[UNIDAD 2: Ecosistema Frontend (React) e Integración Continua.](./fase-2/index.md)**
 3.  **[Fase 3: Arquitectura del Cliente React, TypeScript y Vertical Slicing](./fase-3/index.md)**
 
 [⬅️ Volver al inicio](../index.md)
