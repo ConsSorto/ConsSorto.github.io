@@ -8,7 +8,7 @@ nav_order: 0
 # 🚀 Proyecto Integrador: HabitForge (Habit Tracker Gamificado)
 
 ## 📌 1. Visión Global y Enunciado del Proyecto
-HabitForge es una plataforma web gamificada diseñada para fomentar la disciplina y la construcción de rutinas positivas. A diferencia de un simple "To-Do List", el sistema recompensa la constancia: los usuarios registran sus hábitos diarios, acumulan "rachas" (días consecutivos) y desbloquean recompensas o cupones de forma automática al alcanzar metas configuradas por los administradores del sistema.
+HabitForge es una plataforma web gamificada diseñada para fomentar la disciplina y la construcción de rutinas positivas. A diferencia de un simple "To-Do List", el sistema recompensa la constancia: los usuarios registran sus hábitos diarios, acumulan "progreso" (días consecutivos) y desbloquean recompensas o cupones de forma automática al alcanzar metas configuradas por los administradores del sistema.
 
 ### Objetivo Académico
 Este proyecto servirá como vehículo para aplicar de forma transversal los conceptos de Ingeniería de Software a lo largo de la clase. Su desarrollo exige la implementación de:
@@ -27,7 +27,7 @@ Para garantizar la entrega funcional en un ciclo de desarrollo ágil de 10 seman
 *   **Dos Roles de Seguridad:**
     *   **Jugador:** Interactúa con el sistema marcando hábitos y ganando cupones.
     *   **GameMaster:** Administra el catálogo de recompensas y monitoriza el sistema.
-*   **Motor de Rachas:** El cálculo de la consecución de metas (ej. "20 días seguidos") se ejecutará del lado del servidor (API) en el momento del registro (Check-in), garantizando la seguridad de la regla de negocio.
+*   **Motor de Progresos:** El cálculo de la consecución de metas (ej. "20 días seguidos") se ejecutará del lado del servidor (API) en el momento del registro (Check-in), garantizando la seguridad de la regla de negocio.
 *   **Fuera de Alcance (MVP):** Integraciones con pasarelas de pago, notificaciones push en tiempo real y recuperación de contraseñas por correo electrónico.
 
 ---
@@ -40,7 +40,7 @@ Las funcionalidades de alto nivel se dividen en las siguientes 4 Épicas para fa
 *   **Épica 2: Motor de Hábitos (Core Tracking)**
     Visualización del catálogo de hábitos disponibles y el registro transaccional diario (Check-in) de cada usuario, validando que no existan registros duplicados en un mismo día.
 *   **Épica 3: Gamificación y Recompensas**
-    El motor algorítmico en el backend que calcula las rachas y la interfaz del usuario para visualizar su progreso y los cupones/códigos QR desbloqueados.
+    El motor algorítmico en el backend que calcula las progreso y la interfaz del usuario para visualizar su progreso y los cupones/códigos QR desbloqueados.
 *   **Épica 4: Consola de Administración (Backoffice)**
     Panel de control exclusivo para el rol GameMaster que permite gestionar el inventario de recompensas (CRUD) y establecer las reglas de canje.
 
@@ -66,8 +66,8 @@ A continuación, el Product Backlog priorizado. Cada historia debe cumplir con s
     **Criterios de Aceptación:** El sistema no debe permitir marcar el mismo hábito dos veces en la misma fecha (restricción en la base de datos y validación en API). La UI debe deshabilitar el botón tras el registro exitoso.
 
 ### Épica 3: Gamificación y Recompensas
-*   **HU-05: Cálculo de Rachas (Regla de Negocio Core)**
-    *Como Sistema, quiero evaluar el historial del jugador tras cada check-in, para determinar si ha alcanzado la racha necesaria (Ej. 20 días continuos) y generarle un cupón automáticamente si cumple la meta.*
+*   **HU-05: Cálculo de Progreso (Regla de Negocio Core)**
+    *Como Sistema, quiero evaluar el historial del jugador tras cada check-in, para determinar si ha alcanzado el progreso necesario (Ej. 20 días continuos) y generarle un cupón automáticamente si cumple la meta.*
     **Criterios de Aceptación:** Lógica implementada en la capa de Aplicación (Clean Architecture). Ejecución transaccional (guarda el registro y genera el cupón en el mismo bloque).
 *   **HU-06: Billetera de Cupones**
     *Como Jugador, quiero acceder a una sección de "Mis Premios" en la plataforma, para ver los códigos generados que puedo canjear en la vida real.*
@@ -75,7 +75,7 @@ A continuación, el Product Backlog priorizado. Cada historia debe cumplir con s
 
 ### Épica 4: Consola de Administración
 *   **HU-07: Gestión de Recompensas (CRUD)**
-    *Como GameMaster, quiero una pantalla protegida donde pueda crear, leer, editar y eliminar recompensas (indicando título, racha requerida y stock), para mantener dinámico el juego.*
+    *Como GameMaster, quiero una pantalla protegida donde pueda crear, leer, editar y eliminar recompensas (indicando título, progreso requerido y stock), para mantener dinámico el juego.*
     **Criterios de Aceptación:** La ruta en React debe expulsar a quien no sea GameMaster. El controlador de .NET debe rechazar peticiones HTTP (403 Forbidden) si el JWT no posee el rol adecuado.
 
 ---
