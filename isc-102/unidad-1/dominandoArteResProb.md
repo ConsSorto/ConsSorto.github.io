@@ -19,7 +19,7 @@ En esencia, la programación es un **proceso de resolución de problemas**. Cons
 Para entender cómo interactúan estos elementos, es vital conocer el **ciclo EPSA** (Entrada, Procesamiento, Salida y Almacenamiento), que describe cómo los datos se convierten en información útil (puedes ver el esquema en el **Capítulo 1, Figura 1.2** del libro de Joyanes).
 
 {% include imagen.html 
-   url="../assets/ciclo-epsa.png" 
+   url="../../assets/ciclo-epsa.png" 
    alt="Ciclo EPSA" 
    caption="Figura 1.2: El ciclo de procesamiento de datos." 
 %}
@@ -30,7 +30,7 @@ Las computadoras no entienden el español o el inglés; ellas operan con **lengu
 Como la computadora no entiende "C" directamente, necesitamos una herramienta llamada **compilador**, que traduce nuestro "código fuente" a un "programa ejecutable" que la máquina sí comprende (este flujo se detalla en el **Capítulo 2, Figura 2.5**).
 
 {% include imagen.html 
-   url="../assets/cap2fig2.5.png" 
+   url="../../assets/cap2fig2.5.png" 
    alt="Procesos de Compilación" 
    caption="Figura 2.5: Procesos de Compilación" 
 %}
@@ -44,7 +44,7 @@ Para planificar esta lógica antes de codificar, los programadores usamos dos he
 *   **Diagramas de Flujo:** Representaciones gráficas que utilizan símbolos estandarizados para visualizar la ruta de la solución (consulta el significado de los símbolos en el **Capítulo 2, Figura 2.2**).
 
 {% include imagen.html 
-   url="../assets/cap2fig2.2.png" 
+   url="../../assets/cap2fig2.2.png" 
    alt="Diagrama de Flujo" 
    caption="Figura 2.2: Diagrama de Flujo" 
 %}
