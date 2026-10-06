@@ -33,7 +33,7 @@ Replicación del modelo del servidor aplicando Vertical Slicing en React (src/fe
 **[15. Seguridad y Consumo de API (CORS)](./15.md)**
 Configuración de políticas CORS (Cross-Origin Resource Sharing) en el Backend .NET para permitir peticiones seguras. Uso de librerías HTTP (Axios/Fetch) para conectar el cliente React con nuestra API de Hábitos (Clases 1-9).
 
-**[16. Mutaciones HTTP (POST), Propagación de Errores del Backend y Validación Reactiva (Zod)](./16.md)**
+**[16. Mutaciones HTTP (POST), Propagación de Errores (FluentValidation) y Validación Reactiva (Zod)](./16.md)**
 Conexión de Mutaciones (POST), validaciones del Backend con variables de entorno y Zod.
 
 **[17. Laboratorio de Integración (Front-to-Back)](./17.md)**
