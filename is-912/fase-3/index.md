@@ -15,22 +15,22 @@ En esta tercera fase, daremos el salto al Frontend moderno. Introduciremos TypeS
 
 ## Contenido de la Fase
 
-**[16. Nivelación TypeScript Moderno y Asincronismo](./16.md)**
+**[19. Nivelación TypeScript Moderno y Asincronismo](./19.md)**
 Transición obligatoria de JS a TypeScript. Creación de Interfaces/Types, Promesas y async/await.
 
-**[18. Intro a React, DOM Virtual y Setup con Vite](./18.md)**
+**[20. Intro a React, DOM Virtual y Setup con Vite](./20.md)**
 Inicialización de la aplicación cliente usando Vite con plantilla TypeScript. Sintaxis TSX.
 
-**[19. Arquitectura Frontend por Features (Feature-Sliced Design)](./19.md)**
+**[21. Arquitectura Frontend por Features (Feature-Sliced Design)](./21.md)**
 Abandono del modelo antiguo. Creación de features que encapsulan componentes, rutas, hooks y llamadas API.
 
-**[20. UI Compartida (Core UI) y Arquitectura de Componentes](./20.md)**
+**[22. UI Compartida (Core UI) y Arquitectura de Componentes](./22.md)**
 Diseño de componentes de presentación pura y tipado de Props con TS.
 
-**[21. Manejo de Estado Local y Custom Hooks](./21.md)**
+**[23. Manejo de Estado Local y Custom Hooks](./23.md)**
 Uso de useState y extracción de lógica compleja hacia Custom Hooks.
 
-**[22. Formularios Robustos y Validación](./22.md)**
+**[24. Formularios Robustos y Validación](./24.md)**
 Uso de React Hook Form y Zod para mantener la arquitectura limpia y validación de esquemas.
 
 ---
