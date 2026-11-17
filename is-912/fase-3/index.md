@@ -33,6 +33,9 @@ Uso de useState y extracción de lógica compleja hacia Custom Hooks.
 **[24. Formularios Robustos y Validación](./24.md)**
 Uso de React Hook Form y Zod para mantener la arquitectura limpia y validación de esquemas.
 
+**[🚀 Exposiciones Prácticas: SPA, Seguridad y DevOps](./exposiciones.md)**
+Temario oficial de exposiciones prácticas: Enrutamiento SPA (React Router), Seguridad con JWT e Interceptores HTTP, Interactividad en Tiempo Real con SignalR, Contenerización con Docker y Nginx, Integración Continua (CI) con GitHub Actions y Despliegue Continuo (CD) en la Nube.
+
 ---
 
 [⬅️ Volver al índice general de la clase](../index.md)
